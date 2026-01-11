@@ -23,9 +23,50 @@
   font-family:'Poppins',sans-serif;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:var(--cream);
   color:var(--dark);
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(20,90,50,0.85);
+  backdrop-filter: blur(10px);
+  z-index:1000;
+}
+
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.nav-logo{
+  font-weight:700;
+  color:white;
+  letter-spacing:0.5px;
+}
+
+.nav-links a{
+  color:#e8f5e9;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:0.95rem;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
 }
 
 /* ================= HERO ================= */
@@ -39,7 +80,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:40px 20px;
+  padding:120px 20px 40px;
 }
 
 .hero-box{
@@ -95,7 +136,6 @@ body{
 }
 
 /* ================= APPLE STYLE ANIMATIONS ================= */
-
 .animate-title{
   opacity:0;
   transform:translateY(30px);
@@ -111,29 +151,29 @@ body{
 }
 
 @keyframes logoReveal{
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+  to{ opacity:1; transform:translateY(0) scale(1); }
 }
-
 @keyframes titleReveal{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  to{ opacity:1; transform:translateY(0); }
+}
+@keyframes taglineReveal{
+  to{ opacity:1; transform:translateY(0); }
 }
 
-@keyframes taglineReveal{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+/* ================= SCROLL REVEAL ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* ================= SECTIONS ================= */
 section{
-  padding:80px 20px;
+  padding:90px 20px;
   max-width:1100px;
   margin:auto;
 }
@@ -181,7 +221,7 @@ section{
   margin-bottom:10px;
 }
 
-/* PROCESS */
+/* PROCESS / TRUST */
 .process{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -225,85 +265,69 @@ footer{
 
 <body>
 
+<nav class="navbar">
+  <div class="nav-inner">
+    <span class="nav-logo">Bisauli Green</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#process">How It Works</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
 <header class="hero">
   <div class="hero-box">
     <img src="logo.png" alt="Bisauli Green Logo" class="hero-logo">
-
     <h1 class="animate-title">Bisauli Green</h1>
-    <p class="tagline animate-tagline">Tradition You Can Taste</p>
-
+    <p class="tagline animate-tagline">Inspired by Nature, Driven by Community</p>
     <a class="cta" href="https://wa.me/917060119982?text=Hello%20Bisauli%20Green,%20I%20want%20to%20place%20an%20order." target="_blank">
       Order on WhatsApp
     </a>
   </div>
 </header>
 
-<section>
-  <div class="section-title">
-    <h2>About Us</h2>
-  </div>
+<section id="about" class="reveal">
+  <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
     Bisauli Green Organic Producer Company Limited delivers
     <strong>chemical-free, healthy and natural food products</strong>
-    sourced directly from trusted farmers.  
+    sourced directly from trusted farmers.
     We stand for purity, nutrition and authentic traditional taste.
   </div>
 </section>
 
-<section>
-  <div class="section-title">
-    <h2>Our Products</h2>
-  </div>
-
-  <div class="products">
-    <div class="product">
-      <h3>Jaggery Cubes</h3>
-      <p>Normal, Cardamom, Ginger & Mulethi varieties</p>
-    </div>
-
-    <div class="product">
-      <h3>Jaggery Powder</h3>
-      <p>Pure, chemical-free & naturally processed</p>
-    </div>
-
-    <div class="product">
-      <h3>Wheat Flour</h3>
-      <p>Stone-ground, fresh & nutritious</p>
-    </div>
-
-    <div class="product">
-      <h3>Maize Flour</h3>
-      <p>Traditional processing for authentic taste</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="section-title">
-    <h2>How Ordering Works</h2>
-  </div>
-
+<section class="reveal">
+  <div class="section-title"><h2>Why Choose Bisauli Green</h2></div>
   <div class="process">
-    <div class="step">
-      <h3>1️⃣ Contact Us</h3>
-      <p>Order via WhatsApp</p>
-    </div>
-    <div class="step">
-      <h3>2️⃣ Confirm & Pay</h3>
-      <p>Easy UPI / Payment Link</p>
-    </div>
-    <div class="step">
-      <h3>3️⃣ Delivery</h3>
-      <p>Iffco • Aonla • Bisauli</p>
-    </div>
+    <div class="step"><h3>🌱 Chemical-Free</h3><p>Pure products without harmful chemicals</p></div>
+    <div class="step"><h3>🤝 Community Driven</h3><p>Empowering local farmers & producers</p></div>
+    <div class="step"><h3>🏡 Traditional Methods</h3><p>Authentic processing preserving nutrition</p></div>
   </div>
 </section>
 
-<section class="contact">
-  <div class="section-title">
-    <h2>Contact Us</h2>
+<section id="products" class="reveal">
+  <div class="section-title"><h2>Our Products</h2></div>
+  <div class="products">
+    <div class="product"><h3>Jaggery Cubes</h3><p>Normal, Cardamom, Ginger & Mulethi</p></div>
+    <div class="product"><h3>Jaggery Powder</h3><p>Pure & naturally processed</p></div>
+    <div class="product"><h3>Wheat Flour</h3><p>Stone-ground & nutritious</p></div>
+    <div class="product"><h3>Maize Flour</h3><p>Traditional authentic taste</p></div>
   </div>
+</section>
 
+<section id="process" class="reveal">
+  <div class="section-title"><h2>How Ordering Works</h2></div>
+  <div class="process">
+    <div class="step"><h3>1️⃣ Contact</h3><p>Order via WhatsApp</p></div>
+    <div class="step"><h3>2️⃣ Pay</h3><p>UPI / Payment Link</p></div>
+    <div class="step"><h3>3️⃣ Deliver</h3><p>Iffco • Aonla • Bisauli</p></div>
+  </div>
+</section>
+
+<section id="contact" class="contact reveal">
+  <div class="section-title"><h2>Contact Us</h2></div>
   <p><strong>Service Area:</strong> Iffco, Aonla & Bisauli</p>
   <a class="whatsapp" href="https://wa.me/917060119982" target="_blank">Chat on WhatsApp</a>
 </section>
@@ -311,6 +335,18 @@ footer{
 <footer>
   © 2026 Bisauli Green Organic Producer Company Limited. All Rights Reserved.
 </footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+  reveals.forEach(r => {
+    const top = r.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      r.classList.add('active');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
