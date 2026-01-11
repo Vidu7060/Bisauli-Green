@@ -16,101 +16,56 @@
   --dark:#2C2C2C;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
-
-html{ scroll-behavior:smooth; }
-
-body{
-  background:var(--cream);
-  color:var(--dark);
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--dark);}
 
 /* NAVBAR */
 .navbar{
-  position:fixed;
-  top:0;
-  width:100%;
+  position:fixed;top:0;width:100%;
   background:rgba(20,90,50,0.85);
-  backdrop-filter: blur(10px);
-  z-index:1000;
+  backdrop-filter:blur(10px);z-index:1000;
 }
 .nav-inner{
-  max-width:1200px;
-  margin:auto;
-  padding:14px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  max-width:1200px;margin:auto;padding:14px 22px;
+  display:flex;justify-content:space-between;align-items:center;
 }
-.nav-logo{ font-weight:700; color:white; }
-.nav-links a{
-  color:#e8f5e9;
-  text-decoration:none;
-  margin-left:20px;
-}
-.nav-links a:hover{ color:var(--gold); }
+.nav-logo{color:white;font-weight:700;}
+.nav-links a{color:#e8f5e9;margin-left:20px;text-decoration:none;}
+.nav-links a:hover{color:var(--gold);}
 
 /* HERO */
 .hero{
   min-height:100vh;
-  background:
-    linear-gradient(rgba(20,90,50,0.88), rgba(20,90,50,0.95)),
-    url('https://images.unsplash.com/photo-1506806732259-39c2d0268443');
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background:linear-gradient(rgba(20,90,50,0.9),rgba(20,90,50,0.95)),
+  url('https://images.unsplash.com/photo-1506806732259-39c2d0268443');
+  background-size:cover;background-position:center;
+  display:flex;align-items:center;justify-content:center;
   padding:120px 20px 40px;
 }
 .hero-box{
   background:rgba(0,0,0,0.45);
-  padding:60px 50px;
-  border-radius:26px;
-  text-align:center;
-  max-width:640px;
+  padding:60px 50px;border-radius:26px;
+  text-align:center;max-width:640px;
 }
-.hero-logo{ width:180px; margin-bottom:28px; }
-.hero h1{ font-size:3.2rem; color:white; }
-.tagline{
-  font-size:1.3rem;
-  color:#f5e6b8;
-  margin:20px 0 36px;
-}
+.hero-logo{width:180px;margin-bottom:28px;}
+.hero h1{font-size:3.2rem;color:white;}
+.tagline{font-size:1.3rem;color:#f5e6b8;margin:20px 0 36px;}
 .cta{
-  background:var(--gold);
-  color:white;
-  padding:15px 38px;
-  border-radius:40px;
-  text-decoration:none;
-  font-weight:600;
+  background:var(--gold);color:white;
+  padding:15px 38px;border-radius:40px;
+  text-decoration:none;font-weight:600;
 }
 
-/* SCROLL REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
+/* SCROLL ANIMATION */
+.reveal{opacity:0;transform:translateY(40px);transition:1s;}
+.reveal.active{opacity:1;transform:none;}
 
 /* SECTIONS */
-section{
-  padding:90px 20px;
-  max-width:1100px;
-  margin:auto;
-}
+section{padding:90px 20px;max-width:1100px;margin:auto;}
 .section-title{text-align:center;margin-bottom:50px;}
-.section-title h2{color:var(--green);font-size:2.3rem;}
-.about{text-align:center;max-width:900px;margin:auto;line-height:1.8;}
+.section-title h2{font-size:2.3rem;color:var(--green);}
+.about{text-align:center;max-width:850px;margin:auto;line-height:1.8;}
 
 /* PRODUCTS */
 .products{
@@ -119,93 +74,47 @@ section{
   gap:30px;
 }
 .product{
-  background:white;
-  padding:24px;
-  border-radius:18px;
+  background:white;padding:24px;border-radius:18px;
   box-shadow:0 12px 28px rgba(0,0,0,0.08);
 }
 .product img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:14px;
-  margin-bottom:15px;
+  width:100%;height:180px;object-fit:cover;
+  border-radius:14px;margin-bottom:15px;
 }
-.product h3{ color:var(--dark-green); }
+.product h3{color:var(--dark-green);cursor:pointer;}
+.flavours{display:none;margin-top:15px;border-top:1px dashed #ccc;padding-top:15px;}
+.product.active .flavours{display:block;}
 
-.toggle-flavours{ cursor:pointer; }
-.toggle-flavours::after{ content:" ⌄"; opacity:0.6; }
+.flavour{margin-bottom:20px;}
+.flavour h4{color:var(--green);}
 
 /* WEIGHT */
-.weight-selector{
-  display:flex;
-  gap:8px;
-  margin:6px 0;
-}
+.weight-selector{display:flex;gap:8px;margin:6px 0;}
 .weight-btn{
-  padding:5px 12px;
-  border-radius:20px;
+  padding:5px 12px;border-radius:20px;
   border:1px solid var(--green);
-  background:white;
-  color:var(--green);
-  cursor:pointer;
+  background:white;color:var(--green);cursor:pointer;
 }
-.weight-btn.active,
-.weight-btn:hover{
-  background:var(--green);
-  color:white;
-}
+.weight-btn.active{background:var(--green);color:white;}
 
-/* QUANTITY */
-.quantity-selector{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+/* QTY */
+.quantity-selector{display:flex;align-items:center;gap:10px;}
 .qty-btn{
-  width:26px;
-  height:26px;
-  border-radius:50%;
+  width:26px;height:26px;border-radius:50%;
   border:1px solid var(--green);
-  background:white;
-  color:var(--green);
-  cursor:pointer;
-  font-weight:600;
+  background:white;color:var(--green);cursor:pointer;
 }
-.qty-btn:hover{
-  background:var(--green);
-  color:white;
-}
-.qty{ min-width:20px; text-align:center; }
+.qty-btn:hover{background:var(--green);color:white;}
+.qty{min-width:20px;text-align:center;}
 
-/* PRICE + ORDER */
-.total-price{
-  margin-top:4px;
-  font-weight:600;
-  color:var(--dark-green);
-}
+.total-price{margin-top:5px;font-weight:600;color:var(--dark-green);}
 .order-btn{
-  display:inline-block;
-  margin-top:8px;
-  padding:7px 16px;
-  border-radius:30px;
-  background:var(--green);
-  color:white;
-  text-decoration:none;
-  font-size:0.8rem;
+  display:inline-block;margin-top:8px;
+  padding:7px 16px;border-radius:30px;
+  background:var(--green);color:white;
+  text-decoration:none;font-size:0.8rem;
 }
-.order-btn:hover{ background:var(--dark-green); }
-
-/* FLAVOURS */
-.flavours{
-  display:none;
-  margin-top:15px;
-  border-top:1px dashed #ccc;
-  padding-top:15px;
-}
-.product.jaggery.active .flavours{ display:block; }
-.flavour{ margin-bottom:20px; }
-.flavour h4{ color:var(--green); }
+.order-btn:hover{background:var(--dark-green);}
 </style>
 </head>
 
@@ -227,66 +136,43 @@ section{
     <img src="logo.png" class="hero-logo">
     <h1>Bisauli Green</h1>
     <p class="tagline">Inspired by Nature, Driven by Community</p>
-    <a class="cta" href="https://wa.me/917060119982" target="_blank">Order on WhatsApp</a>
+    <a class="cta" href="https://wa.me/917060119982">Order on WhatsApp</a>
   </div>
 </header>
 
 <section id="about" class="reveal">
   <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
-    Bisauli Green Organic Producer Company Limited is a farmer-owned company delivering
-    chemical-free, traditionally processed food products directly from local farmers.
+    Farmer-owned producer company delivering chemical-free,
+    traditionally processed healthy food.
   </div>
 </section>
 
 <section id="products" class="reveal">
   <div class="section-title"><h2>Our Products</h2></div>
+
   <div class="products">
 
     <!-- JAGGERY CUBES -->
-    <div class="product jaggery">
+    <div class="product">
       <img src="jaggery-cubes.jpg">
-      <h3 class="toggle-flavours" onclick="toggleFlavours(this)">Jaggery Cubes</h3>
+      <h3 onclick="this.parentElement.classList.toggle('active')">
+        Jaggery Cubes (Click to view flavours)
+      </h3>
 
       <div class="flavours">
 
-        <!-- Normal -->
-        <div class="flavour" data-product="Normal Jaggery Cubes" data-price-500="45" data-price-1="80">
-          <h4>Normal</h4>
-          <div class="weight-selector">
-            <button class="weight-btn active">500g</button>
-            <button class="weight-btn">1kg</button>
-          </div>
-          <div class="quantity-selector">
-            <button class="qty-btn minus">−</button>
-            <span class="qty">1</span>
-            <button class="qty-btn plus">+</button>
-          </div>
-          <div class="total-price">Total: ₹45</div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
-        </div>
-
-        <!-- Ginger -->
-        <div class="flavour" data-product="Ginger Jaggery Cubes" data-price-500="55" data-price-1="95">
-          <h4>Ginger</h4>
-          <div class="weight-selector">
-            <button class="weight-btn active">500g</button>
-            <button class="weight-btn">1kg</button>
-          </div>
-          <div class="quantity-selector">
-            <button class="qty-btn minus">−</button>
-            <span class="qty">1</span>
-            <button class="qty-btn plus">+</button>
-          </div>
-          <div class="total-price">Total: ₹55</div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
-        </div>
+        <!-- FLAVOUR TEMPLATE -->
+        <div class="flavour" data-name="Normal Jaggery Cubes" data-500="45" data-1="80"></div>
+        <div class="flavour" data-name="Ginger Jaggery Cubes" data-500="55" data-1="95"></div>
+        <div class="flavour" data-name="Mulethi Jaggery Cubes" data-500="55" data-1="95"></div>
+        <div class="flavour" data-name="Cardamom Jaggery Cubes" data-500="65" data-1="120"></div>
 
       </div>
     </div>
 
     <!-- JAGGERY POWDER -->
-    <div class="product flavour" data-product="Jaggery Powder" data-price-500="45" data-price-1="80">
+    <div class="product flavour" data-name="Jaggery Powder" data-500="45" data-1="80">
       <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
       <div class="weight-selector">
@@ -299,7 +185,21 @@ section{
         <button class="qty-btn plus">+</button>
       </div>
       <div class="total-price">Total: ₹45</div>
-      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
+      <a class="order-btn">Order</a>
+    </div>
+
+    <!-- WHEAT -->
+    <div class="product">
+      <img src="wheat-flour.jpg">
+      <h3>Wheat Flour</h3>
+      <p>Price coming soon</p>
+    </div>
+
+    <!-- MAIZE -->
+    <div class="product">
+      <img src="maize-flour.jpg">
+      <h3>Maize Flour</h3>
+      <p>Price coming soon</p>
     </div>
 
   </div>
@@ -307,7 +207,7 @@ section{
 
 <section id="contact" class="reveal">
   <div class="section-title"><h2>Contact Us</h2></div>
-  <p style="text-align:center;">
+  <p style="text-align:center">
     📍 Iffco • Aonla • Bisauli<br>
     📞 WhatsApp: <strong>7060119982</strong>
   </p>
@@ -318,9 +218,9 @@ section{
 </footer>
 
 <script>
-/* Scroll reveal */
+/* Scroll animation */
 const reveals=document.querySelectorAll('.reveal');
-function handleScrollReveal(){
+function revealOnScroll(){
   reveals.forEach(r=>{
     const rect=r.getBoundingClientRect();
     if(rect.top<window.innerHeight*0.85 && rect.bottom>100){
@@ -330,52 +230,8 @@ function handleScrollReveal(){
     }
   });
 }
-window.addEventListener('scroll',handleScrollReveal);
-window.addEventListener('load',handleScrollReveal);
-
-/* Toggle flavours */
-function toggleFlavours(el){
-  el.closest('.product').classList.toggle('active');
-}
-
-/* Interaction */
-document.addEventListener('click',e=>{
-  if(e.target.classList.contains('weight-btn')){
-    const box=e.target.closest('.flavour');
-    e.target.parentElement.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
-    e.target.classList.add('active');
-    updatePrice(box);
-  }
-  if(e.target.classList.contains('qty-btn')){
-    const box=e.target.closest('.flavour');
-    let qtyEl=box.querySelector('.qty');
-    let qty=parseInt(qtyEl.innerText);
-    if(e.target.classList.contains('plus')) qty++;
-    if(e.target.classList.contains('minus') && qty>1) qty--;
-    qtyEl.innerText=qty;
-    updatePrice(box);
-  }
-});
-
-/* Price */
-function updatePrice(box){
-  const weight=box.querySelector('.weight-btn.active').innerText;
-  const qty=parseInt(box.querySelector('.qty').innerText);
-  const price=weight==="500g"?box.dataset.price500:box.dataset.price1;
-  box.querySelector('.total-price').innerText=`Total: ₹${price*qty}`;
-}
-
-/* Order */
-function orderProduct(e,btn){
-  e.preventDefault();
-  const box=btn.closest('.flavour');
-  const product=box.dataset.product;
-  const weight=box.querySelector('.weight-btn.active').innerText;
-  const qty=box.querySelector('.qty').innerText;
-  const total=box.querySelector('.total-price').innerText;
-  const msg=`I want ${product}\nWeight: ${weight}\nQuantity: ${qty}\n${total}`;
-  window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
-}
+window.addEventListener('scroll',revealOnScroll);
+window.addEventListener('load',revealOnScroll);
 </script>
 
 </body>
