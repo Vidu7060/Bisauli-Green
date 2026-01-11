@@ -380,28 +380,24 @@ function orderProduct(e,btn){
   const msg=`I want ${product}\nWeight: ${weight}\nQuantity: ${qty}\n${total}`;
   window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
 }
-</script>
-<script>
-const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
-
 <script>
 const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
 
 function submitOrder(orderData) {
   // create hidden iframe
-  let iframe = document.createElement("iframe");
+  const iframe = document.createElement("iframe");
+  iframe.name = "hidden_iframe";
   iframe.style.display = "none";
   document.body.appendChild(iframe);
 
   // create form
-  let form = document.createElement("form");
-  form.action = SHEET_API_URL;
+  const form = document.createElement("form");
   form.method = "POST";
-  form.target = iframe.name = "hidden_iframe";
+  form.action = SHEET_API_URL;
+  form.target = "hidden_iframe";
 
-  // add data fields
-  for (let key in orderData) {
-    let input = document.createElement("input");
+  for (const key in orderData) {
+    const input = document.createElement("input");
     input.type = "hidden";
     input.name = key;
     input.value = orderData[key];
@@ -412,6 +408,9 @@ function submitOrder(orderData) {
   form.submit();
 
   alert("✅ Order placed successfully!");
+}
+</script>
+
 }
 </script>
 
@@ -431,9 +430,7 @@ function submitOrder(orderData) {
 }
 </script>
 
- <button
-type="button"
-onclick="submitOrder({
+<button type="button" onclick="submitOrder({
   product:'Test Product',
   flavour:'Test',
   weight:'1kg',
@@ -449,9 +446,11 @@ TEST ORDER
 </button>
 
 
+
   
 </body>
 </html>
+
 
 
 
