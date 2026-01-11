@@ -295,14 +295,25 @@ section{
 
 <script>
 const reveals = document.querySelectorAll('.reveal');
-window.addEventListener('scroll', () => {
-  reveals.forEach(r => {
-    if(r.getBoundingClientRect().top < window.innerHeight - 100){
-      r.classList.add('active');
+
+function handleScrollReveal() {
+  reveals.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const triggerPoint = window.innerHeight * 0.85;
+
+    if (rect.top < triggerPoint && rect.bottom > 100) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
     }
   });
-});
+}
+
+window.addEventListener('scroll', handleScrollReveal);
+window.addEventListener('load', handleScrollReveal);
 </script>
+
 
 </body>
 </html>
+
