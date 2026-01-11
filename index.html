@@ -23,9 +23,7 @@
   font-family:'Poppins',sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{ scroll-behavior:smooth; }
 
 body{
   background:var(--cream);
@@ -54,7 +52,6 @@ body{
 .nav-logo{
   font-weight:700;
   color:white;
-  letter-spacing:0.5px;
 }
 
 .nav-links a{
@@ -62,12 +59,9 @@ body{
   text-decoration:none;
   margin-left:20px;
   font-size:0.95rem;
-  transition:0.3s;
 }
 
-.nav-links a:hover{
-  color:var(--gold);
-}
+.nav-links a:hover{ color:var(--gold); }
 
 /* ================= HERO ================= */
 .hero{
@@ -89,87 +83,46 @@ body{
   border-radius:26px;
   text-align:center;
   max-width:640px;
-  width:100%;
   box-shadow:0 30px 70px rgba(0,0,0,0.45);
 }
 
-/* LOGO */
 .hero-logo{
   width:180px;
   margin-bottom:28px;
   opacity:0;
-  transform:translateY(20px) scale(0.95);
-  animation: logoReveal 1.2s ease forwards;
+  transform:translateY(20px);
+  animation:logoReveal 1.2s ease forwards;
 }
 
-/* TITLE */
 .hero h1{
   font-size:3.2rem;
-  font-weight:700;
-  letter-spacing:0.5px;
-  color:#ffffff;
-  margin-bottom:12px;
+  color:white;
 }
 
-/* TAGLINE */
 .tagline{
   font-size:1.3rem;
   color:#f5e6b8;
-  margin-bottom:36px;
+  margin:20px 0 36px;
 }
 
-/* CTA */
 .cta{
-  display:inline-block;
   background:var(--gold);
   color:white;
   padding:15px 38px;
   border-radius:40px;
   text-decoration:none;
   font-weight:600;
-  transition:0.3s;
 }
 
-.cta:hover{
-  background:#b37522;
-  transform:translateY(-2px);
-}
+.cta:hover{ background:#b37522; }
 
-/* ================= APPLE STYLE ANIMATIONS ================= */
-.animate-title{
-  opacity:0;
-  transform:translateY(30px);
-  animation: titleReveal 1.2s ease forwards;
-  animation-delay:0.4s;
-}
+/* Animations */
+.animate-title{ animation:titleReveal 1.2s ease forwards 0.4s; opacity:0; }
+.animate-tagline{ animation:taglineReveal 1.2s ease forwards 0.8s; opacity:0; }
 
-.animate-tagline{
-  opacity:0;
-  transform:translateY(20px);
-  animation: taglineReveal 1.2s ease forwards;
-  animation-delay:0.8s;
-}
-
-@keyframes logoReveal{
-  to{ opacity:1; transform:translateY(0) scale(1); }
-}
-@keyframes titleReveal{
-  to{ opacity:1; transform:translateY(0); }
-}
-@keyframes taglineReveal{
-  to{ opacity:1; transform:translateY(0); }
-}
-
-/* ================= SCROLL REVEAL ================= */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1s ease;
-}
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
+@keyframes logoReveal{ to{opacity:1;transform:none;} }
+@keyframes titleReveal{ to{opacity:1;transform:none;} }
+@keyframes taglineReveal{ to{opacity:1;transform:none;} }
 
 /* ================= SECTIONS ================= */
 section{
@@ -178,26 +131,12 @@ section{
   margin:auto;
 }
 
-.section-title{
-  text-align:center;
-  margin-bottom:50px;
-}
+.section-title{text-align:center;margin-bottom:50px;}
+.section-title h2{color:var(--green);font-size:2.3rem;}
 
-.section-title h2{
-  font-size:2.3rem;
-  color:var(--green);
-}
+.about{text-align:center;max-width:850px;margin:auto;line-height:1.8;}
 
-/* ABOUT */
-.about{
-  text-align:center;
-  font-size:1.08rem;
-  line-height:1.8;
-  max-width:850px;
-  margin:auto;
-}
-
-/* PRODUCTS */
+/* ================= PRODUCTS ================= */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -209,12 +148,6 @@ section{
   padding:24px;
   border-radius:18px;
   box-shadow:0 12px 28px rgba(0,0,0,0.08);
-  transition:0.3s;
-  overflow:hidden;
-}
-
-.product:hover{
-  transform:translateY(-8px);
 }
 
 .product img{
@@ -223,56 +156,35 @@ section{
   object-fit:cover;
   border-radius:14px;
   margin-bottom:15px;
-  transition:0.4s ease;
 }
 
-.product:hover img{
-  transform:scale(1.05);
-}
+.product h3{color:var(--dark-green);}
 
-.product h3{
-  color:var(--dark-green);
-  margin-bottom:10px;
-}
-
-/* PROCESS / TRUST */
-.process{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-  text-align:center;
-}
-
-.step{
-  background:white;
-  padding:35px 25px;
-  border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.06);
-}
-
-/* CONTACT */
-.contact{
-  text-align:center;
-}
-
-.whatsapp{
-  background:#25D366;
-  color:white;
-  padding:14px 30px;
-  border-radius:40px;
-  text-decoration:none;
+.price{
+  margin:10px 0;
   font-weight:600;
-  display:inline-block;
-  margin-top:25px;
+  color:var(--green);
 }
 
-/* FOOTER */
+.order-btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 18px;
+  border-radius:30px;
+  background:var(--green);
+  color:white;
+  text-decoration:none;
+  font-size:0.85rem;
+}
+
+.order-btn:hover{ background:var(--dark-green); }
+
+/* ================= FOOTER ================= */
 footer{
   background:var(--dark-green);
   color:white;
   text-align:center;
   padding:28px;
-  font-size:0.9rem;
 }
 </style>
 </head>
@@ -285,7 +197,6 @@ footer{
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#products">Products</a>
-      <a href="#process">How It Works</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -293,111 +204,67 @@ footer{
 
 <header class="hero">
   <div class="hero-box">
-    <img src="logo.png" alt="Bisauli Green Logo" class="hero-logo">
+    <img src="logo.png" class="hero-logo">
     <h1 class="animate-title">Bisauli Green</h1>
     <p class="tagline animate-tagline">Inspired by Nature, Driven by Community</p>
-    <a class="cta" href="https://wa.me/917060119982?text=Hello%20Bisauli%20Green,%20I%20want%20to%20place%20an%20order." target="_blank">
-      Order on WhatsApp
-    </a>
+    <a class="cta" href="https://wa.me/917060119982" target="_blank">Order on WhatsApp</a>
   </div>
 </header>
 
-<section id="about" class="reveal">
+<section id="about">
   <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
-    Bisauli Green Organic Producer Company Limited delivers
-    <strong>chemical-free, healthy and natural food products</strong>
-    sourced directly from trusted farmers.
-    We stand for purity, nutrition and authentic traditional taste.
+    Chemical-free, healthy food sourced directly from trusted farmers.
   </div>
 </section>
 
-<section class="reveal">
-  <div class="section-title"><h2>Why Choose Bisauli Green</h2></div>
-  <div class="process">
-    <div class="step"><h3>🌱 Chemical-Free</h3><p>Pure products without harmful chemicals</p></div>
-    <div class="step"><h3>🤝 Community Driven</h3><p>Empowering local farmers & producers</p></div>
-    <div class="step"><h3>🏡 Traditional Methods</h3><p>Authentic processing preserving nutrition</p></div>
-  </div>
-</section>
-
-<section id="products" class="reveal">
+<section id="products">
   <div class="section-title"><h2>Our Products</h2></div>
   <div class="products">
 
     <div class="product">
-  <img src="jaggery-cubes.jpg" alt="Bisauli Green Organic Jaggery Cubes">
-  <h3>Jaggery Cubes</h3>
-  <p>
-    Naturally prepared jaggery cubes made from fresh sugarcane juice,
-    rich in minerals and completely chemical-free.
-  </p>
-</div>
-
-
-   <div class="product">
-  <img src="jaggery-powder.jpg" alt="Bisauli Green Organic Jaggery Powder">
-  <h3>Jaggery Powder</h3>
-  <p>
-    Finely ground jaggery powder made from fresh sugarcane juice,
-    free from chemicals and perfect for daily healthy use.
-  </p>
-</div>
-
+      <img src="jaggery-cubes.jpg">
+      <h3>Jaggery Cubes</h3>
+      <p>Pure sugarcane jaggery cubes.</p>
+      <div class="price">₹220 / kg</div>
+      <a class="order-btn" href="https://wa.me/917060119982?text=I%20want%20Jaggery%20Cubes">Order Now</a>
+    </div>
 
     <div class="product">
-  <img src="wheat-flour.jpg" alt="Bisauli Green Stone Ground Wheat Flour">
-  <h3>Wheat Flour</h3>
-  <p>
-    Stone-ground whole wheat flour made using traditional methods,
-    rich in fiber and natural nutrients.
-  </p>
-</div>
+      <img src="jaggery-powder.jpg">
+      <h3>Jaggery Powder</h3>
+      <p>Fine, chemical-free jaggery powder.</p>
+      <div class="price">₹210 / kg</div>
+      <a class="order-btn" href="https://wa.me/917060119982?text=I%20want%20Jaggery%20Powder">Order Now</a>
+    </div>
 
-<div class="product">
-  <img src="maize-flour.jpg" alt="Bisauli Green Maize Flour">
-  <h3>Maize Flour</h3>
-  <p>
-    Traditionally stone-processed maize flour made from premium corn,
-    rich in energy and natural goodness.
-  </p>
-</div>
+    <div class="product">
+      <img src="wheat-flour.jpg">
+      <h3>Wheat Flour</h3>
+      <p>Stone-ground whole wheat flour.</p>
+      <div class="price">₹45 / kg</div>
+      <a class="order-btn" href="https://wa.me/917060119982?text=I%20want%20Wheat%20Flour">Order Now</a>
+    </div>
 
+    <div class="product">
+      <img src="maize-flour.jpg">
+      <h3>Maize Flour</h3>
+      <p>Traditional maize flour.</p>
+      <div class="price">₹55 / kg</div>
+      <a class="order-btn" href="https://wa.me/917060119982?text=I%20want%20Maize%20Flour">Order Now</a>
+    </div>
 
   </div>
 </section>
 
-<section id="process" class="reveal">
-  <div class="section-title"><h2>How Ordering Works</h2></div>
-  <div class="process">
-    <div class="step"><h3>1️⃣ Contact</h3><p>Order via WhatsApp</p></div>
-    <div class="step"><h3>2️⃣ Pay</h3><p>UPI / Payment Link</p></div>
-    <div class="step"><h3>3️⃣ Deliver</h3><p>Iffco • Aonla • Bisauli</p></div>
-  </div>
-</section>
-
-<section id="contact" class="contact reveal">
+<section id="contact">
   <div class="section-title"><h2>Contact Us</h2></div>
-  <p><strong>Service Area:</strong> Iffco, Aonla & Bisauli</p>
-  <a class="whatsapp" href="https://wa.me/917060119982" target="_blank">Chat on WhatsApp</a>
+  <p>Service Area: Iffco • Aonla • Bisauli</p>
 </section>
 
 <footer>
-  © 2026 Bisauli Green Organic Producer Company Limited. All Rights Reserved.
+  © 2026 Bisauli Green Organic Producer Company Limited
 </footer>
-
-<script>
-const reveals = document.querySelectorAll('.reveal');
-window.addEventListener('scroll', () => {
-  reveals.forEach(r => {
-    if(r.getBoundingClientRect().top < window.innerHeight - 100){
-      r.classList.add('active');
-    }
-  });
-});
-</script>
 
 </body>
 </html>
-
-
