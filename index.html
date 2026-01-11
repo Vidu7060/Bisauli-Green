@@ -57,7 +57,6 @@ body{
   margin-left:20px;
   font-size:0.95rem;
 }
-
 .nav-links a:hover{ color:var(--gold); }
 
 /* ================= HERO ================= */
@@ -82,10 +81,7 @@ body{
   max-width:640px;
 }
 
-.hero-logo{
-  width:180px;
-  margin-bottom:28px;
-}
+.hero-logo{ width:180px; margin-bottom:28px; }
 
 .hero h1{ font-size:3.2rem; color:white; }
 
@@ -102,6 +98,17 @@ body{
   border-radius:40px;
   text-decoration:none;
   font-weight:600;
+}
+
+/* ================= SCROLL REVEAL ================= */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
 }
 
 /* ================= SECTIONS ================= */
@@ -133,7 +140,6 @@ section{
   padding:24px;
   border-radius:18px;
   box-shadow:0 12px 28px rgba(0,0,0,0.08);
-  cursor:pointer;
 }
 
 .product img{
@@ -154,14 +160,15 @@ section{
 
 .order-btn{
   display:inline-block;
-  margin-top:6px;
-  padding:6px 14px;
+  margin-top:8px;
+  padding:7px 16px;
   border-radius:30px;
   background:var(--green);
   color:white;
   text-decoration:none;
   font-size:0.8rem;
 }
+.order-btn:hover{ background:var(--dark-green); }
 
 /* ===== JAGGERY FLAVOURS ===== */
 .flavours{
@@ -170,10 +177,8 @@ section{
   border-top:1px dashed #ccc;
   padding-top:15px;
 }
-
-.product.active .flavours{ display:block; }
-
-.flavour{ margin-bottom:16px; }
+.product.jaggery.active .flavours{ display:block; }
+.flavour{ margin-bottom:14px; }
 .flavour h4{ color:var(--green); font-size:1rem; }
 </style>
 </head>
@@ -192,7 +197,7 @@ section{
 </nav>
 
 <header class="hero">
-  <div class="hero-box">
+  <div class="hero-box reveal">
     <img src="logo.png" class="hero-logo">
     <h1>Bisauli Green</h1>
     <p class="tagline">Inspired by Nature, Driven by Community</p>
@@ -200,94 +205,104 @@ section{
   </div>
 </header>
 
-<section id="about">
+<section id="about" class="reveal">
   <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
-    Bisauli Green Organic Producer Company Limited is a farmer-owned company
-    providing <strong>chemical-free, traditionally processed food products</strong>.
-    We work directly with local farmers to ensure purity, nutrition, and fair value
-    for both producers and consumers.
+    Bisauli Green Organic Producer Company Limited is a farmer-owned producer company
+    delivering chemical-free, traditionally processed food products directly from
+    local farmers.
   </div>
 </section>
 
-<section id="products">
+<section id="products" class="reveal">
   <div class="section-title"><h2>Our Products</h2></div>
   <div class="products">
 
     <!-- JAGGERY CUBES -->
-    <div class="product" onclick="this.classList.toggle('active')">
+    <div class="product jaggery" onclick="this.classList.toggle('active')">
       <img src="jaggery-cubes.jpg">
       <h3>Jaggery Cubes (Click to view flavours)</h3>
 
       <div class="flavours">
 
         <div class="flavour">
-          <h4>Normal Jaggery Cubes</h4>
+          <h4>Normal</h4>
           <p>500g – ₹45 | 1kg – ₹80</p>
           <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Normal%20Jaggery%20Cubes%20500g%20or%201kg"
-             target="_blank">Order</a>
+             href="https://wa.me/917060119982?text=Normal%20Jaggery%20Cubes">Order</a>
         </div>
 
         <div class="flavour">
-          <h4>Ginger Jaggery Cubes</h4>
+          <h4>Ginger</h4>
           <p>500g – ₹55 | 1kg – ₹95</p>
           <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Ginger%20Jaggery%20Cubes%20500g%20or%201kg"
-             target="_blank">Order</a>
+             href="https://wa.me/917060119982?text=Ginger%20Jaggery%20Cubes">Order</a>
         </div>
 
         <div class="flavour">
-          <h4>Mulethi Jaggery Cubes</h4>
+          <h4>Mulethi</h4>
           <p>500g – ₹55 | 1kg – ₹95</p>
           <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Mulethi%20Jaggery%20Cubes%20500g%20or%201kg"
-             target="_blank">Order</a>
+             href="https://wa.me/917060119982?text=Mulethi%20Jaggery%20Cubes">Order</a>
         </div>
 
         <div class="flavour">
-          <h4>Cardamom Jaggery Cubes</h4>
+          <h4>Cardamom</h4>
           <p>500g – ₹65 | 1kg – ₹120</p>
           <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Cardamom%20Jaggery%20Cubes%20500g%20or%201kg"
-             target="_blank">Order</a>
+             href="https://wa.me/917060119982?text=Cardamom%20Jaggery%20Cubes">Order</a>
         </div>
 
       </div>
     </div>
 
-    <!-- JAGGERY POWDER -->
+    <!-- OTHER PRODUCTS -->
     <div class="product">
       <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
       <p>500g – ₹45 | 1kg – ₹80</p>
+      <a class="order-btn" href="https://wa.me/917060119982?text=Jaggery%20Powder">Order Now</a>
     </div>
 
-    <!-- WHEAT FLOUR -->
     <div class="product">
       <img src="wheat-flour.jpg">
       <h3>Wheat Flour</h3>
       <p>Stone-ground whole wheat flour.</p>
+      <a class="order-btn" href="https://wa.me/917060119982?text=Wheat%20Flour">Order Now</a>
     </div>
 
-    <!-- MAIZE FLOUR -->
     <div class="product">
       <img src="maize-flour.jpg">
       <h3>Maize Flour</h3>
       <p>Traditionally processed maize flour.</p>
+      <a class="order-btn" href="https://wa.me/917060119982?text=Maize%20Flour">Order Now</a>
     </div>
 
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="reveal">
   <div class="section-title"><h2>Contact Us</h2></div>
-  <p style="text-align:center;">Service Area: Iffco • Aonla • Bisauli</p>
+  <p style="text-align:center;">
+    📍 Service Area: Iffco • Aonla • Bisauli<br>
+    📞 WhatsApp: <strong>7060119982</strong>
+  </p>
 </section>
 
 <footer>
   © 2026 Bisauli Green Organic Producer Company Limited
 </footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+  reveals.forEach(r => {
+    if(r.getBoundingClientRect().top < window.innerHeight - 100){
+      r.classList.add('active');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
