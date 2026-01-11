@@ -381,9 +381,53 @@ function orderProduct(e,btn){
   window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
 }
 </script>
+<script>
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
 
+async function submitOrder(orderData) {
+  try {
+    const response = await fetch(SHEET_API_URL, {
+      method: "POST",
+      body: JSON.stringify(orderData),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const result = await response.json();
+
+    if (result.status === "success") {
+      alert("✅ Order placed successfully!");
+    } else {
+      alert("❌ Error saving order");
+    }
+  } catch (err) {
+    alert("❌ Network error");
+    console.error(err);
+  }
+}
+</script>
+
+  <button style="margin:40px;padding:12px 20px;"
+onclick="submitOrder({
+  product: 'Test Product',
+  flavour: 'Test Flavour',
+  weight: '1kg',
+  quantity: 1,
+  total: 100,
+  paymentMethod: 'COD',
+  paymentStatus: 'COD',
+  name: 'Test User',
+  phone: '9999999999',
+  address: 'Test Address'
+})">
+TEST ORDER (REMOVE LATER)
+</button>
+
+  
 </body>
 </html>
+
 
 
 
