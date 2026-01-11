@@ -150,19 +150,19 @@ section{
   margin-bottom:15px;
 }
 
-.product h3{ color:var(--dark-green); }
-
-.order-btn{
-  display:inline-block;
-  margin-top:8px;
-  padding:7px 16px;
-  border-radius:30px;
-  background:var(--green);
-  color:white;
-  text-decoration:none;
-  font-size:0.8rem;
+.product h3{
+  color:var(--dark-green);
 }
-.order-btn:hover{ background:var(--dark-green); }
+
+.toggle-flavours{
+  cursor:pointer;
+}
+
+.toggle-flavours::after{
+  content:" ⌄";
+  font-size:0.9rem;
+  opacity:0.7;
+}
 
 /* ===== WEIGHT SELECTOR ===== */
 .weight-selector{
@@ -186,6 +186,19 @@ section{
   background:var(--green);
   color:white;
 }
+
+/* ===== ORDER BUTTON ===== */
+.order-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:7px 16px;
+  border-radius:30px;
+  background:var(--green);
+  color:white;
+  text-decoration:none;
+  font-size:0.8rem;
+}
+.order-btn:hover{ background:var(--dark-green); }
 
 /* ===== JAGGERY FLAVOURS ===== */
 .flavours{
@@ -237,13 +250,14 @@ section{
   <div class="products">
 
     <!-- JAGGERY CUBES -->
-    <div class="product jaggery" onclick="this.classList.toggle('active')">
+    <div class="product jaggery">
       <img src="jaggery-cubes.jpg">
-      <h3>Jaggery Cubes (Click to view flavours)</h3>
+      <h3 class="toggle-flavours" onclick="toggleFlavours(this)">
+        Jaggery Cubes (Click to view flavours)
+      </h3>
 
       <div class="flavours">
 
-        <!-- Normal -->
         <div class="flavour" data-product="Normal Jaggery Cubes">
           <h4>Normal</h4>
           <p>500g – ₹45 | 1kg – ₹80</p>
@@ -254,7 +268,6 @@ section{
           <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <!-- Ginger -->
         <div class="flavour" data-product="Ginger Jaggery Cubes">
           <h4>Ginger</h4>
           <p>500g – ₹55 | 1kg – ₹95</p>
@@ -265,7 +278,6 @@ section{
           <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <!-- Mulethi -->
         <div class="flavour" data-product="Mulethi Jaggery Cubes">
           <h4>Mulethi</h4>
           <p>500g – ₹55 | 1kg – ₹95</p>
@@ -276,7 +288,6 @@ section{
           <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <!-- Cardamom -->
         <div class="flavour" data-product="Cardamom Jaggery Cubes">
           <h4>Cardamom</h4>
           <p>500g – ₹65 | 1kg – ₹120</p>
@@ -299,7 +310,7 @@ section{
         <button class="weight-btn active">500g</button>
         <button class="weight-btn">1kg</button>
       </div>
-      <a class="order-btn" onclick="orderProduct(event,this)">Order Now</a>
+      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
     </div>
 
     <!-- WHEAT FLOUR -->
@@ -309,7 +320,7 @@ section{
       <div class="weight-selector">
         <button class="weight-btn active">1kg</button>
       </div>
-      <a class="order-btn" onclick="orderProduct(event,this)">Order Now</a>
+      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
     </div>
 
     <!-- MAIZE FLOUR -->
@@ -319,7 +330,7 @@ section{
       <div class="weight-selector">
         <button class="weight-btn active">1kg</button>
       </div>
-      <a class="order-btn" onclick="orderProduct(event,this)">Order Now</a>
+      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
     </div>
 
   </div>
@@ -338,38 +349,44 @@ section{
 </footer>
 
 <script>
-/* Scroll reveal */
+/* ===== Scroll Reveal (repeats on up & down) ===== */
 const reveals = document.querySelectorAll('.reveal');
 function handleScrollReveal(){
   reveals.forEach(r=>{
-    const rect=r.getBoundingClientRect();
-    if(rect.top<window.innerHeight*0.85 && rect.bottom>100){
+    const rect = r.getBoundingClientRect();
+    if(rect.top < window.innerHeight*0.85 && rect.bottom > 100){
       r.classList.add('active');
     }else{
       r.classList.remove('active');
     }
   });
 }
-window.addEventListener('scroll',handleScrollReveal);
-window.addEventListener('load',handleScrollReveal);
+window.addEventListener('scroll', handleScrollReveal);
+window.addEventListener('load', handleScrollReveal);
 
-/* Weight selection */
-document.addEventListener('click',e=>{
+/* ===== Toggle flavours ===== */
+function toggleFlavours(el){
+  el.closest('.product').classList.toggle('active');
+}
+
+/* ===== Weight selection ===== */
+document.addEventListener('click', e=>{
   if(e.target.classList.contains('weight-btn')){
-    const group=e.target.parentElement;
+    e.stopPropagation();
+    const group = e.target.parentElement;
     group.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
     e.target.classList.add('active');
   }
 });
 
-/* Order handler */
-function orderProduct(e,btn){
+/* ===== Order handler ===== */
+function orderProduct(e, btn){
   e.preventDefault();
   e.stopPropagation();
-  const container=btn.closest('[data-product]');
-  const product=container.dataset.product;
-  const weight=container.querySelector('.weight-btn.active').innerText;
-  const msg=`I want ${product} - ${weight}`;
+  const container = btn.closest('[data-product]');
+  const product = container.dataset.product;
+  const weight = container.querySelector('.weight-btn.active').innerText;
+  const msg = `I want ${product} - ${weight}`;
   window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
 }
 </script>
