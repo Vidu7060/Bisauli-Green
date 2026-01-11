@@ -83,9 +83,18 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
   width:100%;height:180px;object-fit:cover;
   border-radius:14px;margin-bottom:15px;
 }
-.product h3{color:var(--dark-green);cursor:pointer;}
+.product h3{
+  color:var(--dark-green);
+  cursor:pointer;
+}
+.product-desc{
+  font-size:0.9rem;
+  line-height:1.5;
+  color:#555;
+  margin-bottom:12px;
+}
 
-.flavours{display:none;margin-top:15px;border-top:1px dashed #ccc;padding-top:15px;}
+  .flavours{display:none;margin-top:15px;border-top:1px dashed #ccc;padding-top:15px;}
 .product.active .flavours{display:block;}
 
 .flavour{margin-bottom:20px;}
@@ -162,14 +171,20 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
     <div class="product">
       <img src="jaggery-cubes.jpg">
       <h3 onclick="this.parentElement.classList.toggle('active')">
-        Jaggery Cubes (Click to view flavours)
-      </h3>
+  Jaggery Cubes (Click to view flavours)
+</h3>
+
+<p class="product-desc">
+  Traditional sugarcane jaggery cubes prepared using natural methods.
+  Rich in minerals, energy-boosting and completely chemical-free.
+</p>
+
 
       <div class="flavours">
 
         <!-- FLAVOUR -->
         <div class="flavour" data-name="Normal Jaggery Cubes" data-500="45" data-1="80">
-          <h4>Normal</h4>
+          <h4>Normal Flavor Jaggery Cubes</h4>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
@@ -184,7 +199,7 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
         </div>
 
         <div class="flavour" data-name="Ginger Jaggery Cubes" data-500="55" data-1="95">
-          <h4>Ginger</h4>
+          <h4>Normal Flavor Jaggery Cubes</h4>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
@@ -198,8 +213,8 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
           <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <div class="flavour" data-name="Mulethi Jaggery Cubes" data-500="55" data-1="95">
-          <h4>Mulethi</h4>
+        <div class="flavour" data-name="Mole Jaggery Cubes" data-500="55" data-1="95">
+         <h4>Mole Flavor Jaggery Cubes</h4>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
@@ -214,7 +229,7 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
         </div>
 
         <div class="flavour" data-name="Cardamom Jaggery Cubes" data-500="65" data-1="120">
-          <h4>Cardamom</h4>
+          <h4>Cardamom Flavor Jaggery Cubes</h4>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
@@ -235,7 +250,13 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
     <div class="product flavour" data-name="Jaggery Powder" data-500="45" data-1="80">
       <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
-      <div class="weight-selector">
+
+      <p class="product-desc">
+  Finely ground jaggery powder made from fresh sugarcane juice.
+  A healthy alternative to refined sugar for daily use.
+</p>
+
+        <div class="weight-selector">
         <button class="weight-btn active">500g</button>
         <button class="weight-btn">1kg</button>
       </div>
@@ -248,19 +269,35 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
       <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
     </div>
 
-    <!-- WHEAT -->
-    <div class="product">
-      <img src="wheat-flour.jpg">
-      <h3>Wheat Flour</h3>
-      <p>Price coming soon</p>
-    </div>
+   <!-- WHEAT -->
+<div class="product">
+  <img src="wheat-flour.jpg">
+  
+  <h3>Wheat Flour</h3>
 
-    <!-- MAIZE -->
-    <div class="product">
-      <img src="maize-flour.jpg">
-      <h3>Maize Flour</h3>
-      <p>Price coming soon</p>
-    </div>
+  <p class="product-desc">
+    Stone-ground whole wheat flour made using traditional chakki methods.
+    Rich in fiber, natural nutrients, and perfect for everyday healthy meals.
+  </p>
+
+  <p>Price coming soon</p>
+</div>
+
+
+   <!-- MAIZE -->
+<div class="product">
+  <img src="maize-flour.jpg">
+  
+  <h3>Maize Flour</h3>
+
+  <p class="product-desc">
+    Traditionally processed maize flour made from premium quality corn.
+    Light, nutritious, and naturally gluten-free.
+  </p>
+
+  <p>Price coming soon</p>
+</div>
+
 
   </div>
 </section>
@@ -336,3 +373,4 @@ function orderProduct(e,btn){
 
 </body>
 </html>
+
