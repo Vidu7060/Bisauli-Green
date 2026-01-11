@@ -30,7 +30,7 @@ body{
   color:var(--dark);
 }
 
-/* ================= NAVBAR ================= */
+/* NAVBAR */
 .navbar{
   position:fixed;
   top:0;
@@ -39,7 +39,6 @@ body{
   backdrop-filter: blur(10px);
   z-index:1000;
 }
-
 .nav-inner{
   max-width:1200px;
   margin:auto;
@@ -48,18 +47,15 @@ body{
   justify-content:space-between;
   align-items:center;
 }
-
 .nav-logo{ font-weight:700; color:white; }
-
 .nav-links a{
   color:#e8f5e9;
   text-decoration:none;
   margin-left:20px;
-  font-size:0.95rem;
 }
 .nav-links a:hover{ color:var(--gold); }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
   min-height:100vh;
   background:
@@ -72,7 +68,6 @@ body{
   justify-content:center;
   padding:120px 20px 40px;
 }
-
 .hero-box{
   background:rgba(0,0,0,0.45);
   padding:60px 50px;
@@ -80,17 +75,13 @@ body{
   text-align:center;
   max-width:640px;
 }
-
 .hero-logo{ width:180px; margin-bottom:28px; }
-
 .hero h1{ font-size:3.2rem; color:white; }
-
 .tagline{
   font-size:1.3rem;
   color:#f5e6b8;
   margin:20px 0 36px;
 }
-
 .cta{
   background:var(--gold);
   color:white;
@@ -100,7 +91,7 @@ body{
   font-weight:600;
 }
 
-/* ================= SCROLL REVEAL ================= */
+/* SCROLL REVEAL */
 .reveal{
   opacity:0;
   transform:translateY(40px);
@@ -111,37 +102,28 @@ body{
   transform:translateY(0);
 }
 
-/* ================= SECTIONS ================= */
+/* SECTIONS */
 section{
   padding:90px 20px;
   max-width:1100px;
   margin:auto;
 }
-
 .section-title{text-align:center;margin-bottom:50px;}
 .section-title h2{color:var(--green);font-size:2.3rem;}
+.about{text-align:center;max-width:900px;margin:auto;line-height:1.8;}
 
-.about{
-  text-align:center;
-  max-width:900px;
-  margin:auto;
-  line-height:1.8;
-}
-
-/* ================= PRODUCTS ================= */
+/* PRODUCTS */
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
-
 .product{
   background:white;
   padding:24px;
   border-radius:18px;
   box-shadow:0 12px 28px rgba(0,0,0,0.08);
 }
-
 .product img{
   width:100%;
   height:180px;
@@ -149,45 +131,59 @@ section{
   border-radius:14px;
   margin-bottom:15px;
 }
+.product h3{ color:var(--dark-green); }
 
-.product h3{
-  color:var(--dark-green);
-}
+.toggle-flavours{ cursor:pointer; }
+.toggle-flavours::after{ content:" ⌄"; opacity:0.6; }
 
-.toggle-flavours{
-  cursor:pointer;
-}
-
-.toggle-flavours::after{
-  content:" ⌄";
-  font-size:0.9rem;
-  opacity:0.7;
-}
-
-/* ===== WEIGHT SELECTOR ===== */
+/* WEIGHT */
 .weight-selector{
   display:flex;
   gap:8px;
   margin:6px 0;
 }
-
 .weight-btn{
   padding:5px 12px;
   border-radius:20px;
   border:1px solid var(--green);
   background:white;
   color:var(--green);
-  font-size:0.75rem;
   cursor:pointer;
 }
-
 .weight-btn.active,
 .weight-btn:hover{
   background:var(--green);
   color:white;
 }
 
-/* ===== ORDER BUTTON ===== */
+/* QUANTITY */
+.quantity-selector{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.qty-btn{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  border:1px solid var(--green);
+  background:white;
+  color:var(--green);
+  cursor:pointer;
+  font-weight:600;
+}
+.qty-btn:hover{
+  background:var(--green);
+  color:white;
+}
+.qty{ min-width:20px; text-align:center; }
+
+/* PRICE + ORDER */
+.total-price{
+  margin-top:4px;
+  font-weight:600;
+  color:var(--dark-green);
+}
 .order-btn{
   display:inline-block;
   margin-top:8px;
@@ -200,7 +196,7 @@ section{
 }
 .order-btn:hover{ background:var(--dark-green); }
 
-/* ===== JAGGERY FLAVOURS ===== */
+/* FLAVOURS */
 .flavours{
   display:none;
   margin-top:15px;
@@ -208,9 +204,8 @@ section{
   padding-top:15px;
 }
 .product.jaggery.active .flavours{ display:block; }
-
-.flavour{ margin-bottom:18px; }
-.flavour h4{ color:var(--green); font-size:1rem; }
+.flavour{ margin-bottom:20px; }
+.flavour h4{ color:var(--green); }
 </style>
 </head>
 
@@ -239,9 +234,8 @@ section{
 <section id="about" class="reveal">
   <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
-    Bisauli Green Organic Producer Company Limited is a farmer-owned producer company
-    delivering chemical-free, traditionally processed food products directly from
-    local farmers.
+    Bisauli Green Organic Producer Company Limited is a farmer-owned company delivering
+    chemical-free, traditionally processed food products directly from local farmers.
   </div>
 </section>
 
@@ -252,49 +246,39 @@ section{
     <!-- JAGGERY CUBES -->
     <div class="product jaggery">
       <img src="jaggery-cubes.jpg">
-      <h3 class="toggle-flavours" onclick="toggleFlavours(this)">
-        Jaggery Cubes (Click to view flavours)
-      </h3>
+      <h3 class="toggle-flavours" onclick="toggleFlavours(this)">Jaggery Cubes</h3>
 
       <div class="flavours">
 
-        <div class="flavour" data-product="Normal Jaggery Cubes">
+        <!-- Normal -->
+        <div class="flavour" data-product="Normal Jaggery Cubes" data-price-500="45" data-price-1="80">
           <h4>Normal</h4>
-          <p>500g – ₹45 | 1kg – ₹80</p>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
           </div>
+          <div class="quantity-selector">
+            <button class="qty-btn minus">−</button>
+            <span class="qty">1</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+          <div class="total-price">Total: ₹45</div>
           <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <div class="flavour" data-product="Ginger Jaggery Cubes">
+        <!-- Ginger -->
+        <div class="flavour" data-product="Ginger Jaggery Cubes" data-price-500="55" data-price-1="95">
           <h4>Ginger</h4>
-          <p>500g – ₹55 | 1kg – ₹95</p>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
           </div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
-        </div>
-
-        <div class="flavour" data-product="Mulethi Jaggery Cubes">
-          <h4>Mulethi</h4>
-          <p>500g – ₹55 | 1kg – ₹95</p>
-          <div class="weight-selector">
-            <button class="weight-btn active">500g</button>
-            <button class="weight-btn">1kg</button>
+          <div class="quantity-selector">
+            <button class="qty-btn minus">−</button>
+            <span class="qty">1</span>
+            <button class="qty-btn plus">+</button>
           </div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
-        </div>
-
-        <div class="flavour" data-product="Cardamom Jaggery Cubes">
-          <h4>Cardamom</h4>
-          <p>500g – ₹65 | 1kg – ₹120</p>
-          <div class="weight-selector">
-            <button class="weight-btn active">500g</button>
-            <button class="weight-btn">1kg</button>
-          </div>
+          <div class="total-price">Total: ₹55</div>
           <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
@@ -302,34 +286,19 @@ section{
     </div>
 
     <!-- JAGGERY POWDER -->
-    <div class="product" data-product="Jaggery Powder">
+    <div class="product flavour" data-product="Jaggery Powder" data-price-500="45" data-price-1="80">
       <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
-      <p>500g – ₹45 | 1kg – ₹80</p>
       <div class="weight-selector">
         <button class="weight-btn active">500g</button>
         <button class="weight-btn">1kg</button>
       </div>
-      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
-    </div>
-
-    <!-- WHEAT FLOUR -->
-    <div class="product" data-product="Wheat Flour">
-      <img src="wheat-flour.jpg">
-      <h3>Wheat Flour</h3>
-      <div class="weight-selector">
-        <button class="weight-btn active">1kg</button>
+      <div class="quantity-selector">
+        <button class="qty-btn minus">−</button>
+        <span class="qty">1</span>
+        <button class="qty-btn plus">+</button>
       </div>
-      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
-    </div>
-
-    <!-- MAIZE FLOUR -->
-    <div class="product" data-product="Maize Flour">
-      <img src="maize-flour.jpg">
-      <h3>Maize Flour</h3>
-      <div class="weight-selector">
-        <button class="weight-btn active">1kg</button>
-      </div>
+      <div class="total-price">Total: ₹45</div>
       <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
     </div>
 
@@ -339,7 +308,7 @@ section{
 <section id="contact" class="reveal">
   <div class="section-title"><h2>Contact Us</h2></div>
   <p style="text-align:center;">
-    📍 Service Area: Iffco • Aonla • Bisauli<br>
+    📍 Iffco • Aonla • Bisauli<br>
     📞 WhatsApp: <strong>7060119982</strong>
   </p>
 </section>
@@ -349,44 +318,62 @@ section{
 </footer>
 
 <script>
-/* ===== Scroll Reveal (repeats on up & down) ===== */
-const reveals = document.querySelectorAll('.reveal');
+/* Scroll reveal */
+const reveals=document.querySelectorAll('.reveal');
 function handleScrollReveal(){
   reveals.forEach(r=>{
-    const rect = r.getBoundingClientRect();
-    if(rect.top < window.innerHeight*0.85 && rect.bottom > 100){
+    const rect=r.getBoundingClientRect();
+    if(rect.top<window.innerHeight*0.85 && rect.bottom>100){
       r.classList.add('active');
     }else{
       r.classList.remove('active');
     }
   });
 }
-window.addEventListener('scroll', handleScrollReveal);
-window.addEventListener('load', handleScrollReveal);
+window.addEventListener('scroll',handleScrollReveal);
+window.addEventListener('load',handleScrollReveal);
 
-/* ===== Toggle flavours ===== */
+/* Toggle flavours */
 function toggleFlavours(el){
   el.closest('.product').classList.toggle('active');
 }
 
-/* ===== Weight selection ===== */
-document.addEventListener('click', e=>{
+/* Interaction */
+document.addEventListener('click',e=>{
   if(e.target.classList.contains('weight-btn')){
-    e.stopPropagation();
-    const group = e.target.parentElement;
-    group.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
+    const box=e.target.closest('.flavour');
+    e.target.parentElement.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
     e.target.classList.add('active');
+    updatePrice(box);
+  }
+  if(e.target.classList.contains('qty-btn')){
+    const box=e.target.closest('.flavour');
+    let qtyEl=box.querySelector('.qty');
+    let qty=parseInt(qtyEl.innerText);
+    if(e.target.classList.contains('plus')) qty++;
+    if(e.target.classList.contains('minus') && qty>1) qty--;
+    qtyEl.innerText=qty;
+    updatePrice(box);
   }
 });
 
-/* ===== Order handler ===== */
-function orderProduct(e, btn){
+/* Price */
+function updatePrice(box){
+  const weight=box.querySelector('.weight-btn.active').innerText;
+  const qty=parseInt(box.querySelector('.qty').innerText);
+  const price=weight==="500g"?box.dataset.price500:box.dataset.price1;
+  box.querySelector('.total-price').innerText=`Total: ₹${price*qty}`;
+}
+
+/* Order */
+function orderProduct(e,btn){
   e.preventDefault();
-  e.stopPropagation();
-  const container = btn.closest('[data-product]');
-  const product = container.dataset.product;
-  const weight = container.querySelector('.weight-btn.active').innerText;
-  const msg = `I want ${product} - ${weight}`;
+  const box=btn.closest('.flavour');
+  const product=box.dataset.product;
+  const weight=box.querySelector('.weight-btn.active').innerText;
+  const qty=box.querySelector('.qty').innerText;
+  const total=box.querySelector('.total-price').innerText;
+  const msg=`I want ${product}\nWeight: ${weight}\nQuantity: ${qty}\n${total}`;
   window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
 }
 </script>
