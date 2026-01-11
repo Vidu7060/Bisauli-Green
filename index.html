@@ -152,12 +152,6 @@ section{
 
 .product h3{ color:var(--dark-green); }
 
-.price{
-  margin:8px 0;
-  font-weight:600;
-  color:var(--green);
-}
-
 .order-btn{
   display:inline-block;
   margin-top:8px;
@@ -170,6 +164,29 @@ section{
 }
 .order-btn:hover{ background:var(--dark-green); }
 
+/* ===== WEIGHT SELECTOR ===== */
+.weight-selector{
+  display:flex;
+  gap:8px;
+  margin:6px 0;
+}
+
+.weight-btn{
+  padding:5px 12px;
+  border-radius:20px;
+  border:1px solid var(--green);
+  background:white;
+  color:var(--green);
+  font-size:0.75rem;
+  cursor:pointer;
+}
+
+.weight-btn.active,
+.weight-btn:hover{
+  background:var(--green);
+  color:white;
+}
+
 /* ===== JAGGERY FLAVOURS ===== */
 .flavours{
   display:none;
@@ -178,7 +195,8 @@ section{
   padding-top:15px;
 }
 .product.jaggery.active .flavours{ display:block; }
-.flavour{ margin-bottom:14px; }
+
+.flavour{ margin-bottom:18px; }
 .flavour h4{ color:var(--green); font-size:1rem; }
 </style>
 </head>
@@ -225,57 +243,83 @@ section{
 
       <div class="flavours">
 
-        <div class="flavour">
+        <!-- Normal -->
+        <div class="flavour" data-product="Normal Jaggery Cubes">
           <h4>Normal</h4>
           <p>500g – ₹45 | 1kg – ₹80</p>
-          <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Normal%20Jaggery%20Cubes">Order</a>
+          <div class="weight-selector">
+            <button class="weight-btn active">500g</button>
+            <button class="weight-btn">1kg</button>
+          </div>
+          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <div class="flavour">
+        <!-- Ginger -->
+        <div class="flavour" data-product="Ginger Jaggery Cubes">
           <h4>Ginger</h4>
           <p>500g – ₹55 | 1kg – ₹95</p>
-          <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Ginger%20Jaggery%20Cubes">Order</a>
+          <div class="weight-selector">
+            <button class="weight-btn active">500g</button>
+            <button class="weight-btn">1kg</button>
+          </div>
+          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <div class="flavour">
+        <!-- Mulethi -->
+        <div class="flavour" data-product="Mulethi Jaggery Cubes">
           <h4>Mulethi</h4>
           <p>500g – ₹55 | 1kg – ₹95</p>
-          <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Mulethi%20Jaggery%20Cubes">Order</a>
+          <div class="weight-selector">
+            <button class="weight-btn active">500g</button>
+            <button class="weight-btn">1kg</button>
+          </div>
+          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
-        <div class="flavour">
+        <!-- Cardamom -->
+        <div class="flavour" data-product="Cardamom Jaggery Cubes">
           <h4>Cardamom</h4>
           <p>500g – ₹65 | 1kg – ₹120</p>
-          <a class="order-btn" onclick="event.stopPropagation()"
-             href="https://wa.me/917060119982?text=Cardamom%20Jaggery%20Cubes">Order</a>
+          <div class="weight-selector">
+            <button class="weight-btn active">500g</button>
+            <button class="weight-btn">1kg</button>
+          </div>
+          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
         </div>
 
       </div>
     </div>
 
-    <!-- OTHER PRODUCTS -->
-    <div class="product">
+    <!-- JAGGERY POWDER -->
+    <div class="product" data-product="Jaggery Powder">
       <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
       <p>500g – ₹45 | 1kg – ₹80</p>
-      <a class="order-btn" href="https://wa.me/917060119982?text=Jaggery%20Powder">Order Now</a>
+      <div class="weight-selector">
+        <button class="weight-btn active">500g</button>
+        <button class="weight-btn">1kg</button>
+      </div>
+      <a class="order-btn" onclick="orderProduct(event,this)">Order Now</a>
     </div>
 
-    <div class="product">
+    <!-- WHEAT FLOUR -->
+    <div class="product" data-product="Wheat Flour">
       <img src="wheat-flour.jpg">
       <h3>Wheat Flour</h3>
-      <p>Stone-ground whole wheat flour.</p>
-      <a class="order-btn" href="https://wa.me/917060119982?text=Wheat%20Flour">Order Now</a>
+      <div class="weight-selector">
+        <button class="weight-btn active">1kg</button>
+      </div>
+      <a class="order-btn" onclick="orderProduct(event,this)">Order Now</a>
     </div>
 
-    <div class="product">
+    <!-- MAIZE FLOUR -->
+    <div class="product" data-product="Maize Flour">
       <img src="maize-flour.jpg">
       <h3>Maize Flour</h3>
-      <p>Traditionally processed maize flour.</p>
-      <a class="order-btn" href="https://wa.me/917060119982?text=Maize%20Flour">Order Now</a>
+      <div class="weight-selector">
+        <button class="weight-btn active">1kg</button>
+      </div>
+      <a class="order-btn" onclick="orderProduct(event,this)">Order Now</a>
     </div>
 
   </div>
@@ -294,26 +338,41 @@ section{
 </footer>
 
 <script>
+/* Scroll reveal */
 const reveals = document.querySelectorAll('.reveal');
-
-function handleScrollReveal() {
-  reveals.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    const triggerPoint = window.innerHeight * 0.85;
-
-    if (rect.top < triggerPoint && rect.bottom > 100) {
-      section.classList.add('active');
-    } else {
-      section.classList.remove('active');
+function handleScrollReveal(){
+  reveals.forEach(r=>{
+    const rect=r.getBoundingClientRect();
+    if(rect.top<window.innerHeight*0.85 && rect.bottom>100){
+      r.classList.add('active');
+    }else{
+      r.classList.remove('active');
     }
   });
 }
+window.addEventListener('scroll',handleScrollReveal);
+window.addEventListener('load',handleScrollReveal);
 
-window.addEventListener('scroll', handleScrollReveal);
-window.addEventListener('load', handleScrollReveal);
+/* Weight selection */
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('weight-btn')){
+    const group=e.target.parentElement;
+    group.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
+    e.target.classList.add('active');
+  }
+});
+
+/* Order handler */
+function orderProduct(e,btn){
+  e.preventDefault();
+  e.stopPropagation();
+  const container=btn.closest('[data-product]');
+  const product=container.dataset.product;
+  const weight=container.querySelector('.weight-btn.active').innerText;
+  const msg=`I want ${product} - ${weight}`;
+  window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
+}
 </script>
-
 
 </body>
 </html>
-
