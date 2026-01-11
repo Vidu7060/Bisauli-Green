@@ -384,14 +384,37 @@ function orderProduct(e,btn){
 <script>
 const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
 
-async function submitOrder(orderData) {
-  try {
-    const response = await fetch(SHEET_API_URL, {
-      method: "POST",
-      body: JSON.stringify(orderData),
-      headers: {
-        "Content-Type": "application/json"
-      }
+<script>
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
+
+function submitOrder(orderData) {
+  // create hidden iframe
+  let iframe = document.createElement("iframe");
+  iframe.style.display = "none";
+  document.body.appendChild(iframe);
+
+  // create form
+  let form = document.createElement("form");
+  form.action = SHEET_API_URL;
+  form.method = "POST";
+  form.target = iframe.name = "hidden_iframe";
+
+  // add data fields
+  for (let key in orderData) {
+    let input = document.createElement("input");
+    input.type = "hidden";
+    input.name = key;
+    input.value = orderData[key];
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+
+  alert("✅ Order placed successfully!");
+}
+</script>
+
     });
 
     const result = await response.json();
@@ -429,6 +452,7 @@ TEST ORDER (REMOVE LATER)
   
 </body>
 </html>
+
 
 
 
