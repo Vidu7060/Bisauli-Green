@@ -345,46 +345,50 @@ window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
 
+<script>
 /* ================= PRODUCT INTERACTION ================= */
-document.addEventListener('click', e => {
+document.addEventListener("click", function (e) {
 
- if(e.target.classList.contains('weight-btn')){
-  const box = e.target.closest('.flavour');
-  if(!box) return;
+  // WEIGHT BUTTON
+  if (e.target.classList.contains("weight-btn")) {
+    const box = e.target.closest(".flavour");
+    if (!box) return;
 
-  box.querySelectorAll('.weight-btn')
-     .forEach(b => b.classList.remove('active'));
+    box.querySelectorAll(".weight-btn")
+      .forEach(btn => btn.classList.remove("active"));
 
-  e.target.classList.add('active');
-  updatePrice(box);
-}
-
+    e.target.classList.add("active");
+    updatePrice(box);
   }
 
-if(e.target.classList.contains('weight-btn')){
-  const box = e.target.closest('.flavour');
-  if(!box) return;
+  // QUANTITY BUTTON
+  if (e.target.classList.contains("qty-btn")) {
+    const box = e.target.closest(".flavour");
+    if (!box) return;
 
-  box.querySelectorAll('.weight-btn')
-     .forEach(b => b.classList.remove('active'));
+    const qtyEl = box.querySelector(".qty");
+    let qty = parseInt(qtyEl.innerText);
 
-  e.target.classList.add('active');
-  updatePrice(box);
-}
+    if (e.target.classList.contains("plus")) qty++;
+    if (e.target.classList.contains("minus") && qty > 1) qty--;
 
+    qtyEl.innerText = qty;
+    updatePrice(box);
+  }
 });
-
 
 /* ================= PRICE ================= */
 function updatePrice(box){
-  const weight = box.querySelector('.weight-btn.active').innerText;
-  const qty = parseInt(box.querySelector('.qty').innerText);
-  const price = weight === "500g"
-    ? Number(box.dataset["500"])
-    : Number(box.dataset["1"]);
-  box.querySelector('.total-price').innerText = `Total: ₹${price * qty}`;
-}
+  const weight = box.querySelector(".weight-btn.active").innerText;
+  const qty = parseInt(box.querySelector(".qty").innerText);
+  const price =
+    weight === "500g"
+      ? Number(box.dataset["500"])
+      : Number(box.dataset["1"]);
 
+  box.querySelector(".total-price").innerText =
+    `Total: ₹${price * qty}`;
+}
 
 /* ================= GOOGLE SHEET ================= */
 const SHEET_API_URL =
@@ -409,17 +413,16 @@ function submitOrder(orderData){
   alert("✅ Order placed successfully!");
 }
 
-
 /* ================= ORDER BUTTON ================= */
 function placeOrder(btn){
-  const box = btn.closest('.flavour');
+  const box = btn.closest(".flavour");
 
   submitOrder({
     product: "Jaggery",
     flavour: box.dataset.name,
-    weight: box.querySelector('.weight-btn.active').innerText,
-    quantity: box.querySelector('.qty').innerText,
-    total: box.querySelector('.total-price').innerText.replace("Total: ₹",""),
+    weight: box.querySelector(".weight-btn.active").innerText,
+    quantity: box.querySelector(".qty").innerText,
+    total: box.querySelector(".total-price").innerText.replace("Total: ₹",""),
     paymentMethod: "COD",
     paymentStatus: "Pending"
   });
@@ -431,6 +434,7 @@ function placeOrder(btn){
 
 </body>
 </html>
+
 
 
 
