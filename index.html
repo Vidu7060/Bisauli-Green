@@ -389,13 +389,62 @@ function updatePrice(box){
     `Total: ₹${pricePerUnit * qty}`;
 }
 
-
-/* ================= GOOGLE SHEET INTEGRATION ================= */
 <script>
+/* ================= SCROLL REVEAL ================= */
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll(){
+  reveals.forEach(r=>{
+    const rect = r.getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.85 && rect.bottom > 100){
+      r.classList.add('active');
+    } else {
+      r.classList.remove('active');
+    }
+  });
+}
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+
+/* ================= PRODUCT INTERACTION ================= */
+document.addEventListener('click', e => {
+
+  if(e.target.classList.contains('weight-btn')){
+    const box = e.target.closest('.flavour');
+    box.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    updatePrice(box);
+  }
+
+  if(e.target.classList.contains('qty-btn')){
+    const box = e.target.closest('.flavour');
+    const qtyEl = box.querySelector('.qty');
+    let qty = parseInt(qtyEl.innerText);
+
+    if(e.target.classList.contains('plus')) qty++;
+    if(e.target.classList.contains('minus') && qty > 1) qty--;
+
+    qtyEl.innerText = qty;
+    updatePrice(box);
+  }
+});
+
+
+/* ================= PRICE ================= */
+function updatePrice(box){
+  const weight = box.querySelector('.weight-btn.active').innerText;
+  const qty = parseInt(box.querySelector('.qty').innerText);
+  const price = weight === "500g" ? Number(box.dataset["500"]) : Number(box.dataset["1"]);
+  box.querySelector('.total-price').innerText = `Total: ₹${price * qty}`;
+}
+
+
+/* ================= GOOGLE SHEET (NO FETCH, NO CORS) ================= */
 const SHEET_API_URL =
 "https://script.google.com/macros/s/AKfycbxZ4PGOpJeYT5bNA9MuCZiytzqvY5q0G4u1mO4Tn44CwEqIkDNHgkl2jtn8zO4jogB0pg/exec";
 
-function submitOrder(orderData) {
+function submitOrder(orderData){
   const form = document.createElement("form");
   form.method = "POST";
   form.action = SHEET_API_URL;
@@ -411,36 +460,32 @@ function submitOrder(orderData) {
 
   document.body.appendChild(form);
   form.submit();
-
   alert("✅ Order placed successfully!");
 }
-</script>
-
-<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 
-/* ================= ORDER BUTTON HANDLER ================= */
+/* ================= ORDER BUTTON ================= */
 function placeOrder(btn){
   const box = btn.closest('.flavour');
 
-  const order = {
-    product: "Jaggery Product",
+  submitOrder({
+    product: "Jaggery",
     flavour: box.dataset.name,
     weight: box.querySelector('.weight-btn.active').innerText,
     quantity: box.querySelector('.qty').innerText,
     total: box.querySelector('.total-price').innerText.replace("Total: ₹",""),
     paymentMethod: "COD",
     paymentStatus: "Pending"
-  };
-
-  submitOrder(order);
+  });
 }
 </script>
 
-<!-- ================= SCRIPTS END ================= -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
 
 </body>
 </html>
+
 
 
 
