@@ -70,8 +70,17 @@ body{background:var(--cream);color:var(--dark);}
 }
 
 /* SCROLL */
-.reveal{opacity:1;transform:none;}
-.reveal.active{opacity:1;transform:none;}
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
 
 /* SECTIONS */
 section{padding:90px 20px;max-width:1100px;margin:auto;}
@@ -339,6 +348,7 @@ function revealOnScroll(){
     }
   });
 }
+
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
@@ -430,6 +440,7 @@ function submitOrder(data){
 
 </body>
 </html>
+
 
 
 
