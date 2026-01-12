@@ -164,7 +164,7 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero reveal">
   <div class="hero-box reveal">
     <img src="logo.png" class="hero-logo">
     <h1>Bisauli Green</h1>
@@ -337,21 +337,25 @@ chemical-free food made the way it was meant to be made.
   © 2026 Bisauli Green Organic Producer Company Limited
 </footer>
 <script>
-/* ================= SCROLL REVEAL ================= */
-const reveals = document.querySelectorAll('.reveal');
+const reveals = document.querySelectorAll(".reveal");
 
-function revealOnScroll(){
-  reveals.forEach(r=>{
-    const rect = r.getBoundingClientRect();
-    if(rect.top < window.innerHeight * 0.85){
-      r.classList.add('active');
+function handleScrollReveal() {
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Element is visible (middle of element inside viewport)
+    if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
+      el.classList.add("active");
+    } else {
+      // Reset animation when out of view
+      el.classList.remove("active");
     }
   });
 }
 
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-
+window.addEventListener("scroll", handleScrollReveal);
+window.addEventListener("load", handleScrollReveal);
 
 /* ================= PRODUCT LOGIC ================= */
 document.querySelectorAll(".flavour").forEach(box => {
@@ -440,6 +444,7 @@ function submitOrder(data){
 
 </body>
 </html>
+
 
 
 
