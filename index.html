@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bisauli Green Organic Producer Company Ltd</title>
+  <meta charset="UTF-8">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- SEO Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bisauli Green is a farmer-owned organic producer company offering chemical-free jaggery cubes, jaggery powder, wheat flour and maize flour directly from local farmers.">
+  <meta name="keywords" content="organic jaggery, jaggery cubes, jaggery powder, wheat flour, maize flour">
+  <meta name="author" content="Bisauli Green Organic Producer Company Limited">
+
+  <title>Bisauli Green Organic Producer Company Ltd</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -16,224 +22,313 @@
   --dark:#2C2C2C;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--dark);}
 
-body{
-  background:var(--cream);
-  color:var(--dark);
+/* NAVBAR */
+.navbar{
+  position:fixed;top:0;width:100%;
+  background:rgba(20,90,50,0.85);
+  backdrop-filter:blur(10px);
+  z-index:1000;
 }
+.nav-inner{
+  max-width:1200px;margin:auto;
+  padding:14px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.nav-logo{color:white;font-weight:700;}
+.nav-links a{color:#e8f5e9;margin-left:20px;text-decoration:none;}
+.nav-links a:hover{color:var(--gold);}
 
-/* HEADER */
-header{
-  background:linear-gradient(135deg,var(--green),var(--dark-green));
-  color:white;
-  padding:80px 20px;
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(20,90,50,0.9),rgba(20,90,50,0.95)),
+    url('https://images.unsplash.com/photo-1506806732259-39c2d0268443');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:120px 20px 40px;
+}
+.hero-box{
+  background:rgba(0,0,0,0.45);
+  padding:60px 50px;
+  border-radius:26px;
   text-align:center;
+  max-width:640px;
 }
-
-header h1{
-  font-size:2.8rem;
-  letter-spacing:1px;
-}
-
-header p{
-  margin-top:15px;
-  font-size:1.2rem;
-  color:#e8ffe8;
-}
-
+.hero-logo{width:180px;margin-bottom:28px;}
+.hero h1{font-size:3.2rem;color:white;}
+.tagline{font-size:1.3rem;color:#f5e6b8;margin:20px 0 36px;}
 .cta{
-  display:inline-block;
-  margin-top:30px;
   background:var(--gold);
   color:white;
-  padding:15px 35px;
+  padding:15px 38px;
   border-radius:40px;
   text-decoration:none;
   font-weight:600;
-  transition:0.3s;
 }
 
-.cta:hover{
-  transform:scale(1.05);
-  background:#b37522;
-}
+/* SCROLL */
+.reveal{opacity:0;transform:translateY(40px);transition:1s;}
+.reveal.active{opacity:1;transform:none;}
 
 /* SECTIONS */
-section{
-  padding:70px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:50px;
-}
-
-.section-title h2{
-  font-size:2.2rem;
-  color:var(--green);
-}
-
-/* ABOUT */
-.about{
-  text-align:center;
-  font-size:1.05rem;
-  line-height:1.8;
-}
+section{padding:90px 20px;max-width:1100px;margin:auto;}
+.section-title{text-align:center;margin-bottom:50px;}
+.section-title h2{font-size:2.3rem;color:var(--green);}
+.about{text-align:center;max-width:850px;margin:auto;line-height:1.8;}
 
 /* PRODUCTS */
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
-
 .product{
   background:white;
-  padding:25px;
+  padding:24px;
   border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:0.3s;
+  box-shadow:0 12px 28px rgba(0,0,0,0.08);
 }
-
-.product:hover{
-  transform:translateY(-8px);
+.product img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:15px;
 }
-
 .product h3{
   color:var(--dark-green);
-  margin-bottom:10px;
+  cursor:pointer;
 }
-
-/* PROCESS */
-.process{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:25px;
-  text-align:center;
-}
-
-.step{
-  background:white;
-  padding:30px;
-  border-radius:18px;
-}
-
-/* CONTACT */
-.contact{
-  text-align:center;
-}
-
-.whatsapp{
-  background:#25D366;
-  color:white;
-  padding:15px 30px;
-  border-radius:40px;
-  text-decoration:none;
-  font-weight:600;
-  display:inline-block;
-  margin-top:20px;
-}
-
-/* FOOTER */
-footer{
-  background:var(--dark-green);
-  color:white;
-  text-align:center;
-  padding:25px;
+.product-desc{
   font-size:0.9rem;
+  line-height:1.5;
+  color:#555;
+  margin-bottom:12px;
 }
+
+/* FLAVOURS */
+.flavours{display:none;margin-top:15px;border-top:1px dashed #ccc;padding-top:15px;}
+.product.active .flavours{display:block;}
+
+.flavour{margin-bottom:20px;}
+.flavour h4{color:var(--green);}
+
+/* WEIGHT */
+.weight-selector{display:flex;gap:8px;margin:6px 0;}
+.weight-btn{
+  padding:5px 12px;
+  border-radius:20px;
+  border:1px solid var(--green);
+  background:white;
+  color:var(--green);
+  cursor:pointer;
+}
+.weight-btn.active{background:var(--green);color:white;}
+
+/* QTY */
+.quantity-selector{display:flex;align-items:center;gap:10px;}
+.qty-btn{
+  width:26px;height:26px;
+  border-radius:50%;
+  border:1px solid var(--green);
+  background:white;
+  color:var(--green);
+  cursor:pointer;
+}
+.qty-btn:hover{background:var(--green);color:white;}
+.qty{min-width:20px;text-align:center;}
+
+.total-price{font-weight:600;color:var(--dark-green);}
+.order-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:7px 16px;
+  border-radius:30px;
+  background:var(--green);
+  color:white;
+  text-decoration:none;
+  font-size:0.8rem;
+}
+.order-btn:hover{background:var(--dark-green);}
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Bisauli Green</h1>
-  <p>Pure Taste. Honest Health.</p>
-  <a class="cta" href="https://wa.me/917060119982" target="_blank">Order on WhatsApp</a>
+<nav class="navbar">
+  <div class="nav-inner">
+    <span class="nav-logo">Bisauli Green</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-box reveal">
+    <img src="logo.png" class="hero-logo">
+    <h1>Bisauli Green</h1>
+    <p class="tagline">Inspired by Nature, Driven by Community</p>
+    <a class="cta" href="https://wa.me/917060119982">Order on WhatsApp</a>
+  </div>
 </header>
 
-<section>
-  <div class="section-title">
-    <h2>About Us</h2>
-  </div>
+<section id="about" class="reveal">
+  <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
-    Bisauli Green Organic Producer Company Limited is committed to delivering
-    <strong>chemical-free, healthy and natural food products</strong> directly from
-    trusted farmers.  
-    Our focus is purity, nutrition and honest taste — just the way nature intended.
+    Bisauli Green Organic Producer Company Limited is a farmer-owned initiative
+    focused on delivering chemical-free, traditionally prepared food directly
+    from local farmers using time-tested methods.
   </div>
 </section>
 
-<section>
-  <div class="section-title">
-    <h2>Our Products</h2>
-  </div>
+<section id="products" class="reveal">
+  <div class="section-title"><h2>Our Products</h2></div>
 
   <div class="products">
-    <div class="product">
-      <h3>Jaggery Cubes</h3>
-      <p>Normal, Cardamom, Ginger & Mulethi varieties</p>
+
+    <!-- JAGGERY CUBES -->
+    <div class="product" onclick="this.classList.toggle('active')">
+      <img src="jaggery-cubes.jpg">
+      <h3>Jaggery Cubes (Click to view flavours)</h3>
+
+      <p class="product-desc">
+        Traditional sugarcane jaggery cubes made naturally without chemicals.
+      </p>
+
+      <div class="flavours">
+
+        <div class="flavour" data-name="Normal Jaggery Cubes" data-price-500="45" data-price-1="80">
+          <h4>Normal Flavor Jaggery Cubes</h4>
+          <div class="weight-selector">
+            <button class="weight-btn active">500g</button>
+            <button class="weight-btn">1kg</button>
+          </div>
+          <div class="quantity-selector">
+            <button class="qty-btn minus">−</button>
+            <span class="qty">1</span>
+            <button class="qty-btn plus">+</button>
+          </div>
+          <div class="total-price">Total: ₹45</div>
+          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
+        </div>
+
+      </div>
     </div>
 
-    <div class="product">
+    <!-- JAGGERY POWDER -->
+    <div class="product flavour" data-name="Jaggery Powder" data-price-500="45" data-price-1="80">
+      <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
-      <p>Pure, chemical-free & naturally processed</p>
+      <p class="product-desc">Natural jaggery powder for daily healthy use.</p>
+      <div class="weight-selector">
+        <button class="weight-btn active">500g</button>
+        <button class="weight-btn">1kg</button>
+      </div>
+      <div class="quantity-selector">
+        <button class="qty-btn minus">−</button>
+        <span class="qty">1</span>
+        <button class="qty-btn plus">+</button>
+      </div>
+      <div class="total-price">Total: ₹45</div>
+      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
     </div>
 
+    <!-- WHEAT -->
     <div class="product">
+      <img src="wheat-flour.jpg">
       <h3>Wheat Flour</h3>
-      <p>Stone-ground, fresh & nutritious</p>
+      <p class="product-desc">Stone-ground chakki wheat flour.</p>
+      <p>Price coming soon</p>
     </div>
 
+    <!-- MAIZE -->
     <div class="product">
+      <img src="maize-flour.jpg">
       <h3>Maize Flour</h3>
-      <p>Traditional processing for authentic taste</p>
+      <p class="product-desc">Traditional, naturally processed maize flour.</p>
+      <p>Price coming soon</p>
     </div>
+
   </div>
 </section>
 
-<section>
-  <div class="section-title">
-    <h2>How Ordering Works</h2>
-  </div>
-
-  <div class="process">
-    <div class="step">
-      <h3>1️⃣ Contact Us</h3>
-      <p>Order via WhatsApp</p>
-    </div>
-    <div class="step">
-      <h3>2️⃣ Confirm & Pay</h3>
-      <p>Easy UPI / Payment Link</p>
-    </div>
-    <div class="step">
-      <h3>3️⃣ Delivery</h3>
-      <p>Iffco • Aonla • Bisauli</p>
-    </div>
-  </div>
-</section>
-
-<section class="contact">
-  <div class="section-title">
-    <h2>Contact Us</h2>
-  </div>
-
-  <p><strong>Service Area:</strong> Iffco, Aonla & Bisauli</p>
-  <a class="whatsapp" href="https://wa.me/917060119982" target="_blank">Chat on WhatsApp</a>
+<section id="contact" class="reveal">
+  <div class="section-title"><h2>Contact Us</h2></div>
+  <p style="text-align:center">
+    📍 Iffco • Aonla • Bisauli<br>
+    📞 WhatsApp: <strong>7060119982</strong>
+  </p>
 </section>
 
 <footer>
-  © 2026 Bisauli Green Organic Producer Company Limited. All Rights Reserved.
+  © 2026 Bisauli Green Organic Producer Company Limited
 </footer>
+
+<script>
+/* Scroll reveal */
+const reveals=document.querySelectorAll('.reveal');
+function revealOnScroll(){
+  reveals.forEach(r=>{
+    const rect=r.getBoundingClientRect();
+    if(rect.top<window.innerHeight*0.85 && rect.bottom>100){
+      r.classList.add('active');
+    }else{
+      r.classList.remove('active');
+    }
+  });
+}
+window.addEventListener('scroll',revealOnScroll);
+window.addEventListener('load',revealOnScroll);
+
+/* Interaction */
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('weight-btn')){
+    const box=e.target.closest('.flavour');
+    box.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
+    e.target.classList.add('active');
+    updatePrice(box);
+  }
+
+  if(e.target.classList.contains('qty-btn')){
+    const box=e.target.closest('.flavour');
+    let qtyEl=box.querySelector('.qty');
+    let qty=parseInt(qtyEl.innerText);
+    if(e.target.classList.contains('plus')) qty++;
+    if(e.target.classList.contains('minus') && qty>1) qty--;
+    qtyEl.innerText=qty;
+    updatePrice(box);
+  }
+});
+
+/* Price update — FIXED */
+function updatePrice(box){
+  const weight=box.querySelector('.weight-btn.active').innerText;
+  const qty=parseInt(box.querySelector('.qty').innerText);
+  const price = weight==="500g"
+    ? Number(box.dataset.price500)
+    : Number(box.dataset.price1);
+  box.querySelector('.total-price').innerText=`Total: ₹${price*qty}`;
+}
+
+/* WhatsApp order */
+function orderProduct(e,btn){
+  e.preventDefault();
+  const box=btn.closest('.flavour');
+  const msg=`I want ${box.dataset.name}\n${box.querySelector('.total-price').innerText}`;
+  window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
+}
+</script>
 
 </body>
 </html>
