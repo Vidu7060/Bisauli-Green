@@ -329,108 +329,114 @@ chemical-free food made the way it was meant to be made.
   © 2026 Bisauli Green Organic Producer Company Limited
 </footer>
 
+<!-- ================= SCRIPTS START ================= -->
+
 <script>
-/* Scroll reveal */
-const reveals=document.querySelectorAll('.reveal');
+/* ================= SCROLL REVEAL ================= */
+const reveals = document.querySelectorAll('.reveal');
+
 function revealOnScroll(){
   reveals.forEach(r=>{
-    const rect=r.getBoundingClientRect();
-    if(rect.top<window.innerHeight*0.85 && rect.bottom>100){
+    const rect = r.getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.85 && rect.bottom > 100){
       r.classList.add('active');
-    }else{
+    } else {
       r.classList.remove('active');
     }
   });
 }
-window.addEventListener('scroll',revealOnScroll);
-window.addEventListener('load',revealOnScroll);
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 
-/* Interaction */
-document.addEventListener('click',e=>{
+
+/* ================= PRODUCT INTERACTION ================= */
+document.addEventListener('click', e => {
+
+  // Weight selection
   if(e.target.classList.contains('weight-btn')){
-    const box=e.target.closest('.flavour');
-    box.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
+    const box = e.target.closest('.flavour');
+    box.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
     e.target.classList.add('active');
     updatePrice(box);
   }
 
+  // Quantity change
   if(e.target.classList.contains('qty-btn')){
-    const box=e.target.closest('.flavour');
-    let qtyEl=box.querySelector('.qty');
-    let qty=parseInt(qtyEl.innerText);
+    const box = e.target.closest('.flavour');
+    const qtyEl = box.querySelector('.qty');
+    let qty = parseInt(qtyEl.innerText);
+
     if(e.target.classList.contains('plus')) qty++;
-    if(e.target.classList.contains('minus') && qty>1) qty--;
-    qtyEl.innerText=qty;
+    if(e.target.classList.contains('minus') && qty > 1) qty--;
+
+    qtyEl.innerText = qty;
     updatePrice(box);
   }
+
 });
 
-/* Price update */
+
+/* ================= PRICE CALCULATION ================= */
 function updatePrice(box){
-  const weight=box.querySelector('.weight-btn.active').innerText;
-  const qty=parseInt(box.querySelector('.qty').innerText);
-  const price=weight==="500g"?Number(box.dataset[500]):Number(box.dataset[1]);
-  box.querySelector('.total-price').innerText=`Total: ₹${price*qty}`;
+  const weight = box.querySelector('.weight-btn.active').innerText;
+  const qty = parseInt(box.querySelector('.qty').innerText);
+
+  const pricePerUnit =
+    weight === "500g"
+      ? Number(box.dataset["500"])
+      : Number(box.dataset["1"]);
+
+  box.querySelector('.total-price').innerText =
+    `Total: ₹${pricePerUnit * qty}`;
 }
 
-/* Order */
-function orderProduct(e,btn){
-  e.preventDefault();
-  const box=btn.closest('.flavour');
-  const product=box.dataset.name;
-  const weight=box.querySelector('.weight-btn.active').innerText;
-  const qty=box.querySelector('.qty').innerText;
-  const total=box.querySelector('.total-price').innerText;
-  const msg=`I want ${product}\nWeight: ${weight}\nQuantity: ${qty}\n${total}`;
-  window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
-}
-</script>
-<script>
-const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
 
-async function submitOrder(orderData) {
-  try {
-    const response = await fetch(SHEET_API_URL, {
+/* ================= GOOGLE SHEET INTEGRATION ================= */
+const SHEET_API_URL =
+"https://script.google.com/macros/s/AKfycbwjul4CrJZlfc1fLqj-cJ-iXt8_DcMNw1GSBr6rxFePllq1aCVPFdj_wDGGMlmPy8-7rA/exec";
+
+async function submitOrder(orderData){
+  try{
+    const res = await fetch(SHEET_API_URL, {
       method: "POST",
-      body: JSON.stringify(orderData),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderData)
     });
 
-    const result = await response.json();
+    const result = await res.json();
 
-    if (result.status === "success") {
+    if(result.status === "success"){
       alert("✅ Order placed successfully!");
     } else {
-      alert("❌ Error saving order");
+      alert("❌ Failed to save order");
     }
-  } catch (err) {
-    alert("❌ Network error");
+  } catch(err){
     console.error(err);
+    alert("❌ Network error");
   }
+}
+
+
+/* ================= ORDER BUTTON HANDLER ================= */
+function placeOrder(btn){
+  const box = btn.closest('.flavour');
+
+  const order = {
+    product: "Jaggery Product",
+    flavour: box.dataset.name,
+    weight: box.querySelector('.weight-btn.active').innerText,
+    quantity: box.querySelector('.qty').innerText,
+    total: box.querySelector('.total-price').innerText.replace("Total: ₹",""),
+    paymentMethod: "COD",
+    paymentStatus: "Pending"
+  };
+
+  submitOrder(order);
 }
 </script>
 
- <button
-type="button"
-style="margin:40px;padding:12px 20px;cursor:pointer;"
-onclick="submitOrder({
-  product: 'Test Product',
-  flavour: 'Test Flavour',
-  weight: '1kg',
-  quantity: 1,
-  total: 100,
-  paymentMethod: 'COD',
-  paymentStatus: 'COD',
-  name: 'Test User',
-  phone: '9999999999',
-  address: 'Test Address'
-})">
-TEST ORDER (REMOVE LATER)
-</button>
+<!-- ================= SCRIPTS END ================= -->
 
-  
 </body>
 </html>
 
