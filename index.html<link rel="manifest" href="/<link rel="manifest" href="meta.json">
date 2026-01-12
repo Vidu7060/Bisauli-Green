@@ -390,34 +390,27 @@ function orderProduct(e, btn){
 </script>
 
 <script>
-const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzjpAzN9n8Ymaw3tpg6sFBpcvNXbzz5dlL7j8naoDNZ6ixbO9ctOegIF6xXELsBatII/exec";
+const SHEET_API_URL =
+  "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
 
-async function submitOrder(orderData) {
-  try {
-    const response = await fetch(SHEET_API_URL, {
-      method: "POST",
-      body: JSON.stringify(orderData),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+function submitOrder(orderData) {
+  // fire-and-forget (no response parsing)
+  fetch(SHEET_API_URL, {
+    method: "POST",
+    mode: "no-cors",   // ✅ CRITICAL
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(orderData)
+  });
 
-    const result = await response.json();
-
-    if (result.status === "success") {
-      alert("✅ Order placed successfully!");
-    } else {
-      alert("❌ Error saving order");
-    }
-  } catch (err) {
-    alert("❌ Network error");
-    console.error(err);
-  }
+  alert("✅ Order placed successfully!");
 }
 </script>
-  
-</body>
+
+ </body>
 </html>
+
 
 
 
