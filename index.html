@@ -209,7 +209,7 @@ chemical-free food made the way it was meant to be made.
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹45</div>
-          <a class="order-btn" href="javascript:void(0)" onclick="placeOrder(this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
         <div class="flavour" data-name="Ginger Jaggery Cubes" data-500="55" data-1="95">
@@ -224,7 +224,7 @@ chemical-free food made the way it was meant to be made.
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹55</div>
-          <a class="order-btn" href="javascript:void(0)" onclick="placeOrder(this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
         <div class="flavour" data-name="Mole Jaggery Cubes" data-500="55" data-1="95">
@@ -239,7 +239,7 @@ chemical-free food made the way it was meant to be made.
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹55</div>
-          <a class="order-btn" href="javascript:void(0)" onclick="placeOrder(this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
         <div class="flavour" data-name="Cardamom Jaggery Cubes" data-500="65" data-1="120">
@@ -254,7 +254,7 @@ chemical-free food made the way it was meant to be made.
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹65</div>
-          <a class="order-btn" href="javascript:void(0)" onclick="placeOrder(this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
       </div>
@@ -280,7 +280,7 @@ chemical-free food made the way it was meant to be made.
         <button class="qty-btn plus">+</button>
       </div>
       <div class="total-price">Total: ₹45</div>
-      <a class="order-btn" href="javascript:void(0)" onclick="placeOrder(this)">Order</a>
+      <button class="order-btn">Order</button>
     </div>
 
    <!-- WHEAT -->
@@ -334,10 +334,8 @@ const reveals = document.querySelectorAll('.reveal');
 function revealOnScroll(){
   reveals.forEach(r=>{
     const rect = r.getBoundingClientRect();
-    if(rect.top < window.innerHeight * 0.85 && rect.bottom > 100){
+    if(rect.top < window.innerHeight * 0.85){
       r.classList.add('active');
-    } else {
-      r.classList.remove('active');
     }
   });
 }
@@ -345,66 +343,78 @@ window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
 
 
-<script>
-/* ================= PRODUCT INTERACTION ================= */
-document.addEventListener("click", function (e) {
+/* ================= PRODUCT LOGIC ================= */
+document.querySelectorAll(".flavour").forEach(box => {
 
-  // WEIGHT BUTTON
-  if (e.target.classList.contains("weight-btn")) {
-    const box = e.target.closest(".flavour");
-    if (!box) return;
+  const weightBtns = box.querySelectorAll(".weight-btn");
+  const qtyEl = box.querySelector(".qty");
+  const orderBtn = box.querySelector(".order-btn");
 
-    box.querySelectorAll(".weight-btn")
-      .forEach(btn => btn.classList.remove("active"));
+  // Weight
+  weightBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      weightBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      updatePrice(box);
+    });
+  });
 
-    e.target.classList.add("active");
+  // Quantity +
+  box.querySelector(".plus")?.addEventListener("click", () => {
+    qtyEl.innerText = parseInt(qtyEl.innerText) + 1;
     updatePrice(box);
-  }
+  });
 
-  // QUANTITY BUTTON
-  if (e.target.classList.contains("qty-btn")) {
-    const box = e.target.closest(".flavour");
-    if (!box) return;
-
-    const qtyEl = box.querySelector(".qty");
-    let qty = parseInt(qtyEl.innerText);
-
-    if (e.target.classList.contains("plus")) qty++;
-    if (e.target.classList.contains("minus") && qty > 1) qty--;
-
-    qtyEl.innerText = qty;
+  // Quantity -
+  box.querySelector(".minus")?.addEventListener("click", () => {
+    let q = parseInt(qtyEl.innerText);
+    if(q > 1) qtyEl.innerText = q - 1;
     updatePrice(box);
-  }
+  });
+
+  // Order
+  orderBtn?.addEventListener("click", () => {
+    submitOrder({
+      product: "Jaggery",
+      flavour: box.dataset.name,
+      weight: box.querySelector(".weight-btn.active").innerText,
+      quantity: qtyEl.innerText,
+      total: box.querySelector(".total-price").innerText.replace("Total: ₹",""),
+      paymentMethod: "COD",
+      paymentStatus: "Pending"
+    });
+  });
+
 });
+
 
 /* ================= PRICE ================= */
 function updatePrice(box){
   const weight = box.querySelector(".weight-btn.active").innerText;
   const qty = parseInt(box.querySelector(".qty").innerText);
-  const price =
-    weight === "500g"
-      ? Number(box.dataset["500"])
-      : Number(box.dataset["1"]);
+  const price = weight === "500g"
+    ? Number(box.dataset["500"])
+    : Number(box.dataset["1"]);
 
-  box.querySelector(".total-price").innerText =
-    `Total: ₹${price * qty}`;
+  box.querySelector(".total-price").innerText = `Total: ₹${price * qty}`;
 }
+
 
 /* ================= GOOGLE SHEET ================= */
 const SHEET_API_URL =
 "https://script.google.com/macros/s/AKfycbwH1F8ynnKTHHgvD496Ygp3o5FSHXbnkjTKG5RgjU-Ej6VRaBvKVshtr1zv0OWA_wn3iw/exec";
 
-function submitOrder(orderData){
+function submitOrder(data){
   const form = document.createElement("form");
   form.method = "POST";
   form.action = SHEET_API_URL;
   form.target = "hidden_iframe";
 
-  for (const key in orderData) {
+  for (let key in data){
     const input = document.createElement("input");
     input.type = "hidden";
     input.name = key;
-    input.value = orderData[key];
+    input.value = data[key];
     form.appendChild(input);
   }
 
@@ -434,6 +444,7 @@ function placeOrder(btn){
 
 </body>
 </html>
+
 
 
 
