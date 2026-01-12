@@ -70,7 +70,7 @@ body{background:var(--cream);color:var(--dark);}
 }
 
 /* SCROLL */
-.reveal{opacity:0;transform:translateY(40px);transition:1s;}
+.reveal{opacity:1;transform:none;}
 .reveal.active{opacity:1;transform:none;}
 
 /* SECTIONS */
@@ -348,24 +348,30 @@ window.addEventListener('load', revealOnScroll);
 /* ================= PRODUCT INTERACTION ================= */
 document.addEventListener('click', e => {
 
-  if(e.target.classList.contains('weight-btn')){
-    const box = e.target.closest('.flavour');
-    box.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
-    updatePrice(box);
+ if(e.target.classList.contains('weight-btn')){
+  const box = e.target.closest('.flavour');
+  if(!box) return;
+
+  box.querySelectorAll('.weight-btn')
+     .forEach(b => b.classList.remove('active'));
+
+  e.target.classList.add('active');
+  updatePrice(box);
+}
+
   }
 
-  if(e.target.classList.contains('qty-btn')){
-    const box = e.target.closest('.flavour');
-    const qtyEl = box.querySelector('.qty');
-    let qty = parseInt(qtyEl.innerText);
+if(e.target.classList.contains('weight-btn')){
+  const box = e.target.closest('.flavour');
+  if(!box) return;
 
-    if(e.target.classList.contains('plus')) qty++;
-    if(e.target.classList.contains('minus') && qty > 1) qty--;
+  box.querySelectorAll('.weight-btn')
+     .forEach(b => b.classList.remove('active'));
 
-    qtyEl.innerText = qty;
-    updatePrice(box);
-  }
+  e.target.classList.add('active');
+  updatePrice(box);
+}
+
 });
 
 
@@ -425,6 +431,7 @@ function placeOrder(btn){
 
 </body>
 </html>
+
 
 
 
