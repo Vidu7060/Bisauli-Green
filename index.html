@@ -423,20 +423,6 @@ function submitOrder(data){
   alert("✅ Order placed successfully!");
 }
 
-/* ================= ORDER BUTTON ================= */
-function placeOrder(btn){
-  const box = btn.closest(".flavour");
-
-  submitOrder({
-    product: "Jaggery",
-    flavour: box.dataset.name,
-    weight: box.querySelector(".weight-btn.active").innerText,
-    quantity: box.querySelector(".qty").innerText,
-    total: box.querySelector(".total-price").innerText.replace("Total: ₹",""),
-    paymentMethod: "COD",
-    paymentStatus: "Pending"
-  });
-}
 </script>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
@@ -444,6 +430,7 @@ function placeOrder(btn){
 
 </body>
 </html>
+
 
 
 
