@@ -391,29 +391,32 @@ function updatePrice(box){
 
 
 /* ================= GOOGLE SHEET INTEGRATION ================= */
+<script>
 const SHEET_API_URL =
-"https://script.google.com/macros/s/AKfycbwkjC8wy-g18zpSf-567yZcwJoyxJ9DIQIXyXBmEH-yYtGL9jSzKIe1FjGsROkloAazLQ/exec";
+"https://script.google.com/macros/s/AKfycbxZ4PGOpJeYT5bNA9MuCZiytzqvY5q0G4u1mO4Tn44CwEqIkDNHgkl2jtn8zO4jogB0pg/exec";
 
-async function submitOrder(orderData){
-  try{
-    const res = await fetch(SHEET_API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orderData)
-    });
+function submitOrder(orderData) {
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = SHEET_API_URL;
+  form.target = "hidden_iframe";
 
-    const result = await res.json();
-
-    if(result.status === "success"){
-      alert("✅ Order placed successfully!");
-    } else {
-      alert("❌ Failed to save order");
-    }
-  } catch(err){
-    console.error(err);
-    alert("❌ Network error");
+  for (const key in orderData) {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = key;
+    input.value = orderData[key];
+    form.appendChild(input);
   }
+
+  document.body.appendChild(form);
+  form.submit();
+
+  alert("✅ Order placed successfully!");
 }
+</script>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 
 /* ================= ORDER BUTTON HANDLER ================= */
@@ -438,6 +441,7 @@ function placeOrder(btn){
 
 </body>
 </html>
+
 
 
 
