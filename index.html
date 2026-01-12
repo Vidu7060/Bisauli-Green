@@ -368,21 +368,29 @@ function updatePrice(box){
   const price=weight==="500g"?Number(box.dataset[500]):Number(box.dataset[1]);
   box.querySelector('.total-price').innerText=`Total: ₹${price*qty}`;
 }
-
-/* Order */
-function orderProduct(e,btn){
+<script>
+function orderProduct(e, btn){
   e.preventDefault();
-  const box=btn.closest('.flavour');
-  const product=box.dataset.name;
-  const weight=box.querySelector('.weight-btn.active').innerText;
-  const qty=box.querySelector('.qty').innerText;
-  const total=box.querySelector('.total-price').innerText;
-  const msg=`I want ${product}\nWeight: ${weight}\nQuantity: ${qty}\n${total}`;
-  window.open(`https://wa.me/917060119982?text=${encodeURIComponent(msg)}`,'_blank');
+
+  const box = btn.closest('.flavour');
+  const orderData = {
+    product: box.dataset.name,
+    weight: box.querySelector('.weight-btn.active').innerText,
+    quantity: box.querySelector('.qty').innerText,
+    total: box.querySelector('.total-price').innerText.replace("Total: ₹",""),
+    paymentMethod: "COD",
+    paymentStatus: "Pending",
+    name: "Website User",
+    phone: "Not Provided",
+    address: "Not Provided"
+  };
+
+  submitOrder(orderData);
 }
 </script>
+
 <script>
-const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzjpAzN9n8Ymaw3tpg6sFBpcvNXbzz5dlL7j8naoDNZ6ixbO9ctOegIF6xXELsBatII/exec";
 
 async function submitOrder(orderData) {
   try {
@@ -410,6 +418,7 @@ async function submitOrder(orderData) {
   
 </body>
 </html>
+
 
 
 
