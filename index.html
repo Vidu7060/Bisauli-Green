@@ -146,6 +146,36 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
   text-decoration:none;font-size:0.8rem;
 }
 .order-btn:hover{background:var(--dark-green);}
+
+/* SERVICES ADD-ON STYLING */
+.service-more{
+  margin-top:12px;
+  padding:12px;
+  background:#f4fbf7;
+  border-left:4px solid var(--green);
+  border-radius:10px;
+  font-size:0.85rem;
+  line-height:1.6;
+  color:#444;
+  display:none; /* Initially collapsed */
+}
+.service-icon{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+.service-highlight{
+  color:var(--green);
+  font-weight:600;
+}
+
+/* ALIGN TEST BUTTON & FOOTER CENTER */
+#test-order-container{
+  text-align:center;
+  margin:40px 0;
+}
+footer{text-align:center;padding:20px 0;}
+
+  
 </style>
 </head>
 
@@ -323,6 +353,67 @@ chemical-free food made the way it was meant to be made.
   </div>
 </section>
 
+  <!-- SERVICES SECTION WITH COLLAPSIBLE KNOW MORE -->
+<section id="services" class="reveal">
+  <div class="section-title"><h2>Our Services</h2></div>
+
+  <div class="products">
+
+    <!-- EXPORT SERVICES -->
+    <div class="product">
+      <div class="service-icon">🌍</div>
+      <h3>Export Services</h3>
+      <p class="product-desc">
+        We support the export of agricultural and organic products
+        with quality-focused processing and packaging.
+      </p>
+      <div class="service-more">
+        <span class="service-highlight">Export Support Includes:</span><br>
+        • Export-quality grading & packaging<br>
+        • Compliance with buyer requirements<br>
+        • Assistance for domestic & international markets<br>
+        • Traceability from farm to shipment
+      </div>
+      <a class="order-btn know-more-btn">Know More</a>
+    </div>
+
+    <!-- BULK SUPPLY -->
+    <div class="product">
+      <div class="service-icon">📦</div>
+      <h3>Bulk Supply</h3>
+      <p class="product-desc">
+        Reliable bulk supply for institutions, wholesalers,
+        retailers, and food businesses.
+      </p>
+      <div class="service-more">
+        <span class="service-highlight">Bulk Supply Benefits:</span><br>
+        • Consistent quality & quantity<br>
+        • Competitive pricing for large orders<br>
+        • Flexible supply schedules<br>
+        • Direct-from-producer sourcing
+      </div>
+      <a class="order-btn know-more-btn">Know More</a>
+    </div>
+
+    <!-- FARMER SOURCING -->
+    <div class="product">
+      <div class="service-icon">🌾</div>
+      <h3>Farmer Sourcing</h3>
+      <p class="product-desc">
+        Direct sourcing from farmers ensuring fair pricing,
+        transparency, and sustainable agricultural practices.
+      </p>
+      <div class="service-more">
+        <span class="service-highlight">Farmer Sourcing Includes:</span><br>
+        • Aggregation of farmer produce<br>
+        • Quality checks at farm level<br>
+        • Support in organic certification<br>
+        • Fair and timely payments to farmers
+      </div>
+      <a class="order-btn know-more-btn">Know More</a>
+    </div>
+
+   </div>
 <section id="contact" class="reveal">
   <div class="section-title"><h2>Contact Us</h2></div>
   <p style="text-align:center">
@@ -442,6 +533,7 @@ function submitOrder(data){
 
 </body>
 </html>
+
 
 
 
