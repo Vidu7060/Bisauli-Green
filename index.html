@@ -1,8 +1,13 @@
+LATEST
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
 
+  <!-- SEO Meta Tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Bisauli Green is a farmer-owned organic producer company offering chemical-free jaggery cubes, jaggery powder, wheat flour and maize flour directly from local farmers in Bisauli, Aonla and IFFCO.">
   <meta name="keywords" content="organic jaggery, jaggery cubes, jaggery powder, wheat flour, maize flour, chemical free jaggery, Bisauli organic food">
@@ -10,9 +15,9 @@
 
   <title>Bisauli Green Organic Producer Company Ltd</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 :root{
   --green:#1F7A3F;
   --dark-green:#145A32;
@@ -65,8 +70,17 @@ body{background:var(--cream);color:var(--dark);}
 }
 
 /* SCROLL */
-.reveal{opacity:0;transform:translateY(40px);transition:1s;}
-.reveal.active{opacity:1;transform:none;}
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
 
 /* SECTIONS */
 section{padding:90px 20px;max-width:1100px;margin:auto;}
@@ -98,8 +112,10 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
   color:#555;
   margin-bottom:12px;
 }
-.flavours{display:none;margin-top:15px;border-top:1px dashed #ccc;padding-top:15px;}
+
+  .flavours{display:none;margin-top:15px;border-top:1px dashed #ccc;padding-top:15px;}
 .product.active .flavours{display:block;}
+
 .flavour{margin-bottom:20px;}
 .flavour h4{color:var(--green);}
 
@@ -123,6 +139,7 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
 }
 .qty-btn:hover{background:var(--green);color:white;}
 .qty{min-width:20px;text-align:center;}
+
 .total-price{font-weight:600;color:var(--dark-green);}
 .order-btn{
   display:inline-block;margin-top:8px;
@@ -131,34 +148,6 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
   text-decoration:none;font-size:0.8rem;
 }
 .order-btn:hover{background:var(--dark-green);}
-
-/* SERVICES ADD-ON STYLING */
-.service-more{
-  margin-top:12px;
-  padding:12px;
-  background:#f4fbf7;
-  border-left:4px solid var(--green);
-  border-radius:10px;
-  font-size:0.85rem;
-  line-height:1.6;
-  color:#444;
-  display:none; /* Initially collapsed */
-}
-.service-icon{
-  font-size:2rem;
-  margin-bottom:10px;
-}
-.service-highlight{
-  color:var(--green);
-  font-weight:600;
-}
-
-/* ALIGN TEST BUTTON & FOOTER CENTER */
-#test-order-container{
-  text-align:center;
-  margin:40px 0;
-}
-footer{text-align:center;padding:20px 0;}
 </style>
 </head>
 
@@ -170,18 +159,16 @@ footer{text-align:center;padding:20px 0;}
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#products">Products</a>
-      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero reveal">
   <div class="hero-box reveal">
     <img src="logo.png" class="hero-logo">
     <h1>Bisauli Green</h1>
     <p class="tagline">Inspired by Nature, Driven by Community</p>
-    <a class="cta" href="https://wa.me/917060119982">Order on WhatsApp</a>
   </div>
 </header>
 
@@ -189,32 +176,36 @@ footer{text-align:center;padding:20px 0;}
   <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
     Bisauli Green Organic Producer Company Limited was born from a simple yet powerful belief —
-    that food should nourish the body, respect nature, and support the people who grow it.
+that food should nourish the body, respect nature, and support the people who grow it.
 
-    Rooted in the fertile lands of Bisauli and surrounding regions, we are a farmer-owned producer company committed to reviving traditional food practices that prioritize purity, nutrition, and honesty over mass production and shortcuts.
+Rooted in the fertile lands of Bisauli and surrounding regions, we are a farmer-owned producer company committed to reviving traditional food practices that prioritize purity, nutrition, and honesty over mass production and shortcuts.
 
-    In a world increasingly dominated by chemical processing and artificial additives, Bisauli Green stands as a return to basics —
-    chemical-free food made the way it was meant to be made.
+In a world increasingly dominated by chemical processing and artificial additives, Bisauli Green stands as a return to basics —
+chemical-free food made the way it was meant to be made.
   </div>
 </section>
 
-<!-- PRODUCTS SECTION -->
 <section id="products" class="reveal">
   <div class="section-title"><h2>Our Products</h2></div>
+
   <div class="products">
 
     <!-- JAGGERY CUBES -->
-    <div class="product">
+    <div class="product reveal">
       <img src="jaggery-cubes.jpg">
       <h3 onclick="this.parentElement.classList.toggle('active')">
-        Jaggery Cubes (Click to view flavours)
-      </h3>
-      <p class="product-desc">
-        Traditional sugarcane jaggery cubes prepared using natural methods.
-        Rich in minerals, energy-boosting and completely chemical-free.
-      </p>
+  Jaggery Cubes (Click to view flavours)
+</h3>
+
+<p class="product-desc">
+  Traditional sugarcane jaggery cubes prepared using natural methods.
+  Rich in minerals, energy-boosting and completely chemical-free.
+</p>
+
+
       <div class="flavours">
 
+        <!-- FLAVOUR -->
         <div class="flavour" data-name="Normal Jaggery Cubes" data-500="45" data-1="80">
           <h4>Normal Flavor Jaggery Cubes</h4>
           <div class="weight-selector">
@@ -227,11 +218,11 @@ footer{text-align:center;padding:20px 0;}
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹45</div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
         <div class="flavour" data-name="Ginger Jaggery Cubes" data-500="55" data-1="95">
-          <h4>Ginger Flavor Jaggery Cubes</h4>
+          <h4>Normal Flavor Jaggery Cubes</h4>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
@@ -242,11 +233,11 @@ footer{text-align:center;padding:20px 0;}
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹55</div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
         <div class="flavour" data-name="Mole Jaggery Cubes" data-500="55" data-1="95">
-          <h4>Mole Flavor Jaggery Cubes</h4>
+         <h4>Mole Flavor Jaggery Cubes</h4>
           <div class="weight-selector">
             <button class="weight-btn active">500g</button>
             <button class="weight-btn">1kg</button>
@@ -257,7 +248,7 @@ footer{text-align:center;padding:20px 0;}
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹55</div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
         <div class="flavour" data-name="Cardamom Jaggery Cubes" data-500="65" data-1="120">
@@ -272,7 +263,7 @@ footer{text-align:center;padding:20px 0;}
             <button class="qty-btn plus">+</button>
           </div>
           <div class="total-price">Total: ₹65</div>
-          <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
+          <button class="order-btn">Order</button>
         </div>
 
       </div>
@@ -282,11 +273,13 @@ footer{text-align:center;padding:20px 0;}
     <div class="product flavour" data-name="Jaggery Powder" data-500="45" data-1="80">
       <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
+
       <p class="product-desc">
-        Finely ground jaggery powder made from fresh sugarcane juice.
-        A healthy alternative to refined sugar for daily use.
-      </p>
-      <div class="weight-selector">
+  Finely ground jaggery powder made from fresh sugarcane juice.
+  A healthy alternative to refined sugar for daily use.
+</p>
+
+        <div class="weight-selector">
         <button class="weight-btn active">500g</button>
         <button class="weight-btn">1kg</button>
       </div>
@@ -296,96 +289,42 @@ footer{text-align:center;padding:20px 0;}
         <button class="qty-btn plus">+</button>
       </div>
       <div class="total-price">Total: ₹45</div>
-      <a class="order-btn" onclick="orderProduct(event,this)">Order</a>
+      <button class="order-btn">Order</button>
     </div>
 
-    <!-- WHEAT FLOUR -->
-    <div class="product">
-      <img src="wheat-flour.jpg">
-      <h3>Wheat Flour</h3>
-      <p class="product-desc">
-        Stone-ground whole wheat flour made using traditional chakki methods.
-        Rich in fiber, natural nutrients, and perfect for everyday healthy meals.
-      </p>
-      <p>Price coming soon</p>
-    </div>
+   <!-- WHEAT -->
+<div class="product reveal">
+  <img src="wheat-flour.jpg">
+  
+  <h3>Wheat Flour</h3>
 
-    <!-- MAIZE FLOUR -->
-    <div class="product">
-      <img src="maize-flour.jpg">
-      <h3>Maize Flour</h3>
-      <p class="product-desc">
-        Traditionally processed maize flour made from premium quality corn.
-        Light, nutritious, and naturally gluten-free.
-      </p>
-      <p>Price coming soon</p>
-    </div>
+  <p class="product-desc">
+    Stone-ground whole wheat flour made using traditional chakki methods.
+    Rich in fiber, natural nutrients, and perfect for everyday healthy meals.
+  </p>
+
+  <p>Price coming soon</p>
+</div>
+
+
+   <!-- MAIZE -->
+<div class="product reveal">
+  <img src="maize-flour.jpg">
+  
+  <h3>Maize Flour</h3>
+
+  <p class="product-desc">
+    Traditionally processed maize flour made from premium quality corn.
+    Light, nutritious, and naturally gluten-free.
+  </p>
+
+  <p>Price coming soon</p>
+</div>
+
 
   </div>
 </section>
 
-<!-- SERVICES SECTION WITH COLLAPSIBLE KNOW MORE -->
-<section id="services" class="reveal">
-  <div class="section-title"><h2>Our Services</h2></div>
-
-  <div class="products">
-
-    <!-- EXPORT SERVICES -->
-    <div class="product">
-      <div class="service-icon">🌍</div>
-      <h3>Export Services</h3>
-      <p class="product-desc">
-        We support the export of agricultural and organic products
-        with quality-focused processing and packaging.
-      </p>
-      <div class="service-more">
-        <span class="service-highlight">Export Support Includes:</span><br>
-        • Export-quality grading & packaging<br>
-        • Compliance with buyer requirements<br>
-        • Assistance for domestic & international markets<br>
-        • Traceability from farm to shipment
-      </div>
-      <a class="order-btn know-more-btn">Know More</a>
-    </div>
-
-    <!-- BULK SUPPLY -->
-    <div class="product">
-      <div class="service-icon">📦</div>
-      <h3>Bulk Supply</h3>
-      <p class="product-desc">
-        Reliable bulk supply for institutions, wholesalers,
-        retailers, and food businesses.
-      </p>
-      <div class="service-more">
-        <span class="service-highlight">Bulk Supply Benefits:</span><br>
-        • Consistent quality & quantity<br>
-        • Competitive pricing for large orders<br>
-        • Flexible supply schedules<br>
-        • Direct-from-producer sourcing
-      </div>
-      <a class="order-btn know-more-btn">Know More</a>
-    </div>
-
-    <!-- FARMER SOURCING -->
-    <div class="product">
-      <div class="service-icon">🌾</div>
-      <h3>Farmer Sourcing</h3>
-      <p class="product-desc">
-        Direct sourcing from farmers ensuring fair pricing,
-        transparency, and sustainable agricultural practices.
-      </p>
-      <div class="service-more">
-        <span class="service-highlight">Farmer Sourcing Includes:</span><br>
-        • Aggregation of farmer produce<br>
-        • Quality checks at farm level<br>
-        • Support in organic certification<br>
-        • Fair and timely payments to farmers
-      </div>
-      <a class="order-btn know-more-btn">Know More</a>
-    </div>
-
-  </div>
-</section><!-- CONTACT SECTION -->
 <section id="contact" class="reveal">
   <div class="section-title"><h2>Contact Us</h2></div>
   <p style="text-align:center">
@@ -394,121 +333,133 @@ footer{text-align:center;padding:20px 0;}
   </p>
 </section>
 
-<!-- TEST ORDER BUTTON CENTERED -->
-<div id="test-order-container">
-  <button
-    type="button"
-    style="padding:12px 20px;cursor:pointer;"
-    onclick="submitOrder({
-      product: 'Test Product',
-      flavour: 'Test Flavour',
-      weight: '1kg',
-      quantity: 1,
-      total: 100,
-      paymentMethod: 'COD',
-      paymentStatus: 'COD',
-      name: 'Test User',
-      phone: '9999999999',
-      address: 'Test Address'
-    })">
-    TEST ORDER (REMOVE LATER)
-  </button>
-</div>
-
-<!-- FOOTER CENTERED -->
 <footer>
   © 2026 Bisauli Green Organic Producer Company Limited
 </footer>
-
-<!-- JS SCRIPTS -->
 <script>
-/* Scroll reveal */
-const reveals = document.querySelectorAll('.reveal');
-function revealOnScroll() {
-  reveals.forEach(r => {
-    const rect = r.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.85 && rect.bottom > 100) {
-      r.classList.add('active');
+const reveals = document.querySelectorAll(".reveal");
+
+function handleScrollReveal() {
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Element is visible (middle of element inside viewport)
+    if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
+      el.classList.add("active");
     } else {
-      r.classList.remove('active');
+      // Reset animation when out of view
+      el.classList.remove("active");
     }
   });
 }
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
 
-/* Product Interaction */
-document.addEventListener('click', e => {
-  if (e.target.classList.contains('weight-btn')) {
-    const box = e.target.closest('.flavour');
-    box.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
-    e.target.classList.add('active');
+window.addEventListener("scroll", handleScrollReveal);
+window.addEventListener("load", handleScrollReveal);
+
+/* ================= PRODUCT LOGIC ================= */
+document.querySelectorAll(".flavour").forEach(box => {
+
+  const weightBtns = box.querySelectorAll(".weight-btn");
+  const qtyEl = box.querySelector(".qty");
+  const orderBtn = box.querySelector(".order-btn");
+
+  // Weight
+  weightBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      weightBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      updatePrice(box);
+    });
+  });
+
+  // Quantity +
+  box.querySelector(".plus")?.addEventListener("click", () => {
+    qtyEl.innerText = parseInt(qtyEl.innerText) + 1;
     updatePrice(box);
-  }
+  });
 
-  if (e.target.classList.contains('qty-btn')) {
-    const box = e.target.closest('.flavour');
-    let qtyEl = box.querySelector('.qty');
-    let qty = parseInt(qtyEl.innerText);
-    if (e.target.classList.contains('plus')) qty++;
-    if (e.target.classList.contains('minus') && qty > 1) qty--;
-    qtyEl.innerText = qty;
+  // Quantity -
+  box.querySelector(".minus")?.addEventListener("click", () => {
+    let q = parseInt(qtyEl.innerText);
+    if(q > 1) qtyEl.innerText = q - 1;
     updatePrice(box);
-  }
+  });
 
-  /* Collapsible Know More for Services */
-  if (e.target.classList.contains('know-more-btn')) {
-    const box = e.target.closest('.product');
-    const more = box.querySelector('.service-more');
-    if (more.style.display === 'block') {
-      more.style.display = 'none';
-      e.target.innerText = 'Know More';
-    } else {
-      more.style.display = 'block';
-      e.target.innerText = 'Hide';
-    }
-  }
+  // Order
+  orderBtn?.addEventListener("click", () => {
+    submitOrder({
+      product: "Jaggery",
+      flavour: box.dataset.name,
+      weight: box.querySelector(".weight-btn.active").innerText,
+      quantity: qtyEl.innerText,
+      total: box.querySelector(".total-price").innerText.replace("Total: ₹",""),
+      paymentMethod: "COD",
+      paymentStatus: "Pending"
+    });
+  });
+
 });
 
-/* Price update */
-function updatePrice(box) {
-  const weight = box.querySelector('.weight-btn.active').innerText;
-  const qty = parseInt(box.querySelector('.qty').innerText);
-  const price = weight === "500g" ? Number(box.dataset[500]) : Number(box.dataset[1]);
-  box.querySelector('.total-price').innerText = Total: ₹${price * qty};
+
+/* ================= PRICE ================= */
+function updatePrice(box){
+  const weight = box.querySelector(".weight-btn.active").innerText;
+  const qty = parseInt(box.querySelector(".qty").innerText);
+  const price = weight === "500g"
+    ? Number(box.dataset["500"])
+    : Number(box.dataset["1"]);
+
+  box.querySelector(".total-price").innerText = `Total: ₹${price * qty}`;
 }
 
-/* Order */
-function orderProduct(e, btn) {
-  e.preventDefault();
-  const box = btn.closest('.flavour');
-  const product = box.dataset.name;
-  const weight = box.querySelector('.weight-btn.active').innerText;
-  const qty = box.querySelector('.qty').innerText;
-  const total = box.querySelector('.total-price').innerText;
-  const msg = I want ${product}\nWeight: ${weight}\nQuantity: ${qty}\n${total};
-  window.open(https://wa.me/917060119982?text=${encodeURIComponent(msg)}, '_blank');
-}
 
-/* Google Sheet API */
-const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzg33Z-Wue8GlLPOO3vDNhlmYwp0kOnaWJGbNco_p6d51L3r8cbII8dxkBghnWzYT7e/exec";
+/* ================= GOOGLE SHEET ================= */
+const SHEET_API_URL =
+"https://script.google.com/macros/s/AKfycbwH1F8ynnKTHHgvD496Ygp3o5FSHXbnkjTKG5RgjU-Ej6VRaBvKVshtr1zv0OWA_wn3iw/exec";
 
-async function submitOrder(orderData) {
-  try {
-    const response = await fetch(SHEET_API_URL, {
-      method: "POST",
-      body: JSON.stringify(orderData),
-      headers: { "Content-Type": "application/json" }
-    });
-    const result = await response.json();
-    if (result.status === "success") alert("✅ Order placed successfully!");
-    else alert("❌ Error saving order");
-  } catch (err) {
-    alert("❌ Network error");
-    console.error(err);
+function submitOrder(data){
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = SHEET_API_URL;
+  form.target = "hidden_iframe";
+
+  for (let key in data){
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = key;
+    input.value = data[key];
+    form.appendChild(input);
   }
+
+  document.body.appendChild(form);
+  form.submit();
+  alert("✅ Order placed successfully!");
 }
+
 </script>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
