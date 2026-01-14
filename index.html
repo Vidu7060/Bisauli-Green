@@ -445,14 +445,13 @@ function handleScrollReveal() {
 
 window.addEventListener("scroll", handleScrollReveal);
 window.addEventListener("load", handleScrollReveal);
-
 /* ================= PRODUCT LOGIC ================= */
 document.querySelectorAll(".flavour").forEach(box => {
 
   const weightBtns = box.querySelectorAll(".weight-btn");
   const qtyEl = box.querySelector(".qty");
   const orderBtn = box.querySelector(".order-btn");
-
+  
   // Weight
   weightBtns.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -461,7 +460,6 @@ document.querySelectorAll(".flavour").forEach(box => {
       updatePrice(box);
     });
   });
-
   // Quantity +
   box.querySelector(".plus")?.addEventListener("click", () => {
     qtyEl.innerText = parseInt(qtyEl.innerText) + 1;
@@ -474,7 +472,6 @@ document.querySelectorAll(".flavour").forEach(box => {
     if(q > 1) qtyEl.innerText = q - 1;
     updatePrice(box);
   });
-
   // Order
   orderBtn?.addEventListener("click", () => {
     submitOrder({
@@ -490,7 +487,6 @@ document.querySelectorAll(".flavour").forEach(box => {
 
 });
 
-
 /* ================= PRICE ================= */
 function updatePrice(box){
   const weight = box.querySelector(".weight-btn.active").innerText;
@@ -501,7 +497,6 @@ function updatePrice(box){
 
   box.querySelector(".total-price").innerText = `Total: ₹${price * qty}`;
 }
-
 
 /* ================= GOOGLE SHEET ================= */
 const SHEET_API_URL =
@@ -526,13 +521,30 @@ function submitOrder(data){
   alert("✅ Order placed successfully!");
 }
 
+/* ================= SERVICES: KNOW MORE TOGGLE ================= */
+document.querySelectorAll(".know-more-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const box = btn.closest(".product");
+    const more = box.querySelector(".service-more");
+
+    if (more.style.display === "block") {
+      more.style.display = "none";
+      btn.innerText = "Know More";
+    } else {
+      more.style.display = "block";
+      btn.innerText = "Hide";
+    }
+  });
+});
+
+  
 </script>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-
 </body>
 </html>
+
 
 
 
