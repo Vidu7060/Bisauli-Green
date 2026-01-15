@@ -111,6 +111,30 @@ section{padding:90px 20px;max-width:1100px;margin:auto;}
   margin-bottom:12px;
 }
 
+/* ===== 3D CARD EFFECT ===== */
+.product{
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.product:hover{
+  transform: translateY(-12px) rotateX(4deg) rotateY(-2deg);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.18),
+    inset 0 0 0 rgba(255,255,255,0);
+}
+
+/* Image depth */
+.product img{
+  transform: translateZ(30px);
+}
+
+/* Text depth */
+.product h3,
+.product p{
+  transform: translateZ(20px);
+}
+  
   .flavours{display:none;margin-top:15px;border-top:1px dashed #ccc;padding-top:15px;}
 .product.open .flavours{display:block;}
 
@@ -586,6 +610,7 @@ document.querySelectorAll(".know-more-btn").forEach(btn => {
 
 </body>
 </html>
+
 
 
 
