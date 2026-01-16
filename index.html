@@ -222,6 +222,12 @@ footer{text-align:center;padding:20px 0;}
 body{
   perspective: 1200px;
 }
+
+.coming-soon{
+  font-weight:600;
+  color:#999;
+  font-style:italic;
+}
   
 </style>
 </head>
@@ -234,6 +240,7 @@ body{
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#products">Products</a>
+      <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -292,7 +299,7 @@ chemical-free food made the way it was meant to be made.
             <span class="qty">1</span>
             <button class="qty-btn plus">+</button>
           </div>
-          <div class="total-price">Total: ₹45</div>
+          <div class="total-price">Coming Soon</div>
           <button class="order-btn">Order</button>
         </div>
 
@@ -307,7 +314,7 @@ chemical-free food made the way it was meant to be made.
             <span class="qty">1</span>
             <button class="qty-btn plus">+</button>
           </div>
-          <div class="total-price">Total: ₹55</div>
+          <div class="total-price">Coming Soon</div>
           <button class="order-btn">Order</button>
         </div>
 
@@ -322,7 +329,7 @@ chemical-free food made the way it was meant to be made.
             <span class="qty">1</span>
             <button class="qty-btn plus">+</button>
           </div>
-          <div class="total-price">Total: ₹55</div>
+          <div class="total-price">Coming Soon</div>
           <button class="order-btn">Order</button>
         </div>
 
@@ -337,7 +344,7 @@ chemical-free food made the way it was meant to be made.
             <span class="qty">1</span>
             <button class="qty-btn plus">+</button>
           </div>
-          <div class="total-price">Total: ₹65</div>
+          <div class="total-price">Coming Soon</div>
           <button class="order-btn">Order</button>
         </div>
 
@@ -345,7 +352,7 @@ chemical-free food made the way it was meant to be made.
     </div>
 
     <!-- JAGGERY POWDER -->
-    <div class="product flavour" data-name="Jaggery Powder" data-500="45" data-1="80">
+   <div class="product flavour reveal" data-name="Jaggery Powder" data-500="45" data-1="80">
       <img src="jaggery-powder.jpg">
       <h3>Jaggery Powder</h3>
 
@@ -363,7 +370,7 @@ chemical-free food made the way it was meant to be made.
         <span class="qty">1</span>
         <button class="qty-btn plus">+</button>
       </div>
-      <div class="total-price">Total: ₹45</div>
+      <div class="total-price">Coming Soon</div>
       <button class="order-btn">Order</button>
     </div>
 
@@ -574,13 +581,13 @@ document.querySelectorAll(".flavour").forEach(box => {
 
 /* ================= PRICE ================= */
 function updatePrice(box){
-  const weight = box.querySelector(".weight-btn.active").innerText;
-  const qty = parseInt(box.querySelector(".qty").innerText);
-  const price = weight === "500g"
-    ? Number(box.dataset["500"])
-    : Number(box.dataset["1"]);
+ // const weight = box.querySelector(".weight-btn.active").innerText;
+  //const qty = parseInt(box.querySelector(".qty").innerText);
+  //const price = weight === "500g"
+    //? Number(box.dataset["500"])
+    //: Number(box.dataset["1"]);
 
-  box.querySelector(".total-price").innerText = `Total: ₹${price * qty}`;
+  //box.querySelector(".total-price").innerText = `Total: ₹${price * qty}`;
 }
 
 /* ================= GOOGLE SHEET ================= */
@@ -629,6 +636,7 @@ document.querySelectorAll(".know-more-btn").forEach(btn => {
 
 </body>
 </html>
+
 
 
 
