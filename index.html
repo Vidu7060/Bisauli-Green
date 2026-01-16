@@ -45,13 +45,17 @@ body{background:var(--cream);color:var(--dark);}
   align-items:center;
 }
 
-.nav-logo img{
-  height:42px;              /* perfect for navbar */
+  .nav-logo img{
+  height:42px;
   width:auto;
   display:block;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+
+  background: transparent;
+  mix-blend-mode: multiply;
 }
-.nav-links a{color:#e8f5e9;margin-left:20px;text-decoration:none;}
+
+  .nav-links a{color:#e8f5e9;margin-left:20px;text-decoration:none;}
 .nav-links a:hover{color:var(--gold);}
 
 /* HERO */
@@ -68,7 +72,14 @@ body{background:var(--cream);color:var(--dark);}
   padding:60px 50px;border-radius:26px;
   text-align:center;max-width:640px;
 }
-.hero-logo{width:180px;margin-bottom:28px;}
+.hero-logo{
+  width:140px;              /* smaller, balanced */
+  margin-bottom:22px;
+  opacity:0.9;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
 .hero h1{font-size:3.2rem;color:white;}
 .tagline{font-size:1.3rem;color:#f5e6b8;margin:20px 0 36px;}
 .cta{
@@ -247,7 +258,7 @@ body{
 <nav class="navbar">
   <div class="nav-inner">
   <div class="nav-logo">
-  <img src="Bisauli-Green-Organic.png" alt="Bisauli Green Organic Logo">
+ <img src="Bisauli-Green-Organic.png" class="hero-logo soft-logo">
 </div>
     <div class="nav-links">
       <a href="#about">About</a>
@@ -260,7 +271,7 @@ body{
 
 <header class="hero reveal">
   <div class="hero-box reveal">
-     <img src="Bisauli-Green-Organic.png" alt="Bisauli Green Organic">
+    <img src="Bisauli-Green-Organic.png" class="hero-logo soft-logo">
     <h1>Bisauli Green Organic</h1>
     <p class="tagline">Inspired by Nature, Driven by Community</p>
   </div>
@@ -648,6 +659,7 @@ document.querySelectorAll(".know-more-btn").forEach(btn => {
 
 </body>
 </html>
+
 
 
 
