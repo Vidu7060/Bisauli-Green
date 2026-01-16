@@ -40,21 +40,33 @@ body{background:var(--cream);color:var(--dark);}
   padding:14px 22px;
   display:flex;justify-content:space-between;align-items:center;
 }
+/* TEXT LOGO FOR NAVBAR */
 .nav-logo{
   display:flex;
   align-items:center;
+  gap:6px;
+  font-weight:900;
+  letter-spacing:0.8px;
 }
 
-  .nav-logo img{
-  height:42px;
-  width:auto;
-  display:block;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
-
-  background: transparent;
-  mix-blend-mode: multiply;
+/* BG part */
+.nav-logo .bg-mark{
+  font-size:28px;
+  color:#ffffff;          /* bright white for contrast */
+  font-weight:900;
 }
 
+/* Organic part */
+.nav-logo .bg-text{
+  font-size:20px;
+  color:#F7F5EF;          /* cream shade */
+  font-weight:800;
+}
+
+/* subtle depth */
+.nav-logo{
+  text-shadow:0 2px 6px rgba(0,0,0,0.35);
+}
   .nav-links a{color:#e8f5e9;margin-left:20px;text-decoration:none;}
 .nav-links a:hover{color:var(--gold);}
 
@@ -666,6 +678,7 @@ document.querySelectorAll(".know-more-btn").forEach(btn => {
 
 </body>
 </html>
+
 
 
 
