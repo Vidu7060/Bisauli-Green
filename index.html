@@ -40,7 +40,17 @@ body{background:var(--cream);color:var(--dark);}
   padding:14px 22px;
   display:flex;justify-content:space-between;align-items:center;
 }
-.nav-logo{color:white;font-weight:700;}
+.nav-logo{
+  display:flex;
+  align-items:center;
+}
+
+.nav-logo img{
+  height:42px;              /* perfect for navbar */
+  width:auto;
+  display:block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
+}
 .nav-links a{color:#e8f5e9;margin-left:20px;text-decoration:none;}
 .nav-links a:hover{color:var(--gold);}
 
@@ -236,7 +246,9 @@ body{
 
 <nav class="navbar">
   <div class="nav-inner">
-    <span class="nav-logo">Bisauli Green</span>
+  <div class="nav-logo">
+  <img src="bisauli-green-logo.png" alt="Bisauli Green Organic Logo">
+</div>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#products">Products</a>
@@ -249,7 +261,7 @@ body{
 <header class="hero reveal">
   <div class="hero-box reveal">
     <img src="logo.png" class="hero-logo">
-    <h1>Bisauli Green</h1>
+    <h1>Bisauli Green Organic</h1>
     <p class="tagline">Inspired by Nature, Driven by Community</p>
   </div>
 </header>
@@ -636,6 +648,7 @@ document.querySelectorAll(".know-more-btn").forEach(btn => {
 
 </body>
 </html>
+
 
 
 
